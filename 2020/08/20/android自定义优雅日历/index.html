@@ -1,0 +1,501 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="清风明月博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.3.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://YanSil.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="Android" />
+
+
+<meta name="description" content="Adroid自定义优雅、性能高效的日历控件，完美支持周视图，支持标记、自定义颜色、农历等，任意控制月视图显示、任意日期拦截条件、自定义周起始等。Canvas绘制，极速性能、占用内存低，，支持简单..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    android自定义优雅日历 |
+    
+    清风明月博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="清风明月博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    https://hexo-theme-snippet-1251680922.cos.ap-beijing.myqcloud.com/img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='严益云'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://YanSil.github.io">
+                        清风明月博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="android自定义优雅日历">
+            
+            android自定义优雅日历
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/Android/">Android</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2020/08/20</span>
+    </span>
+    
+    
+</div>
+        
+        
+        <p class="fa fa-exclamation-triangle warning">
+            本文于<strong>
+                376</strong>
+            天之前发表，文中内容可能已经过时。
+        </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>Adroid自定义优雅、性能高效的日历控件，完美支持周视图，支持标记、自定义颜色、农历等，任意控制月视图显示、任意日期拦截条件、自定义周起始等。Canvas绘制，极速性能、占用内存低，，支持简单定制即可实现任意自定义布局、自定义UI，支持收缩展开、性能非常高效， 这个控件内存和效率优势相当明显，而且真正做到收缩+展开，适配多种场景，支持同时多种颜色标记日历事务，支持多点触控，你真的想不到日历还可以如此优雅！更多参考用法请移步Demo，Demo实现了4个精美的自定义效果。</p>
+<p>dependencies {</p>
+<p>implementation ‘com.github.Visen123:CalendarView:V1.0’</p>
+<p>}</p>
+<p>混淆proguard-rules<br>-keepclasseswithmembers class * {<br>public <init>(android.content.Context);<br>}<br>或者针对性的使用混淆<br>-keep class your project path.MonthView {<br>public <init>(android.content.Context);<br>}<br>-keep class your project path.WeekBar {<br>public <init>(android.content.Context);<br>}<br>-keep class your project path.WeekView {<br>public <init>(android.content.Context);<br>}</p>
+<p>特别的，请注意不要复制这三个路径，自行替换您自己的自定义路径</p>
+<p>app:month_view=”com.yanyiyun.calendarviewproject.simple.SimpleCalendarCardView”<br>app:week_view=”com.yanyiyun.calendarviewproject.simple.SimpleWeekView”<br>app:week_bar_view=”com.yanyiyun.calendarviewproject.EnglishWeekBar”<br>使用方法<br> &lt;com.yanyiyun.calendarview.CalendarLayout<br>        android:layout_width=”match_parent”<br>        android:layout_height=”match_parent”<br>        android:orientation=”vertical”<br>        app:default_status=”shrink”<br>        app:calendar_show_mode=”only_week_view”<br>        app:calendar_content_view_id=”@+id/recyclerView”&gt;</p>
+<pre><code>    &lt;com.yanyiyun.calendarview.CalendarView
+         android:id=&quot;@+id/calendarView&quot;
+         android:layout_width=&quot;match_parent&quot;
+         android:layout_height=&quot;wrap_content&quot;
+         android:background=&quot;#fff&quot;
+         app:month_view=&quot;com.yanyiyun.calendarviewproject.simple.SimpleCalendarCardView&quot;
+         app:week_view=&quot;com.yanyiyun.calendarviewproject.simple.SimpleWeekView&quot;
+         app:week_bar_view=&quot;com.yanyiyun.calendarviewproject.EnglishWeekBar&quot;
+         app:calendar_height=&quot;50dp&quot;
+         app:current_month_text_color=&quot;#333333&quot;
+         app:current_month_lunar_text_color=&quot;#CFCFCF&quot;
+         app:min_year=&quot;2004&quot;
+         app:other_month_text_color=&quot;#e1e1e1&quot;
+         app:scheme_text=&quot;假&quot;
+         app:scheme_text_color=&quot;#333&quot;
+         app:scheme_theme_color=&quot;#333&quot;
+         app:selected_text_color=&quot;#fff&quot;
+         app:selected_theme_color=&quot;#333&quot;
+         app:week_start_with=&quot;mon&quot;
+         app:week_background=&quot;#fff&quot;
+         app:month_view_show_mode=&quot;mode_only_current&quot;
+         app:week_text_color=&quot;#111&quot; /&gt;
+
+    &lt;android.support.v7.widget.RecyclerView
+        android:id=&quot;@+id/recyclerView&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:background=&quot;#d4d4d4&quot; /&gt;
+&lt;/com.yanyiyun.calendarview.CalendarLayout&gt;
+</code></pre>
+<p>CalendarView attrs<br><declare-styleable name="CalendarView"></p>
+<pre><code>    &lt;attr name=&quot;calendar_padding&quot; format=&quot;dimension&quot; /&gt;&lt;!--日历内部左右padding--&gt;
+
+    &lt;attr name=&quot;month_view&quot; format=&quot;color&quot; /&gt; &lt;!--自定义类日历月视图路径--&gt;
+    &lt;attr name=&quot;week_view&quot; format=&quot;string&quot; /&gt; &lt;!--自定义类周视图路径--&gt;
+    &lt;attr name=&quot;week_bar_height&quot; format=&quot;dimension&quot; /&gt; &lt;!--星期栏的高度--&gt;
+    &lt;attr name=&quot;week_bar_view&quot; format=&quot;color&quot; /&gt; &lt;!--自定义类周栏路径，通过自定义则 week_text_color week_background xml设置无效，当仍可java api设置--&gt;
+    &lt;attr name=&quot;week_line_margin&quot; format=&quot;dimension&quot; /&gt;&lt;!--线条margin--&gt;
+
+    &lt;attr name=&quot;week_line_background&quot; format=&quot;color&quot; /&gt;&lt;!--线条颜色--&gt;
+    &lt;attr name=&quot;week_background&quot; format=&quot;color&quot; /&gt; &lt;!--星期栏的背景--&gt;
+    &lt;attr name=&quot;week_text_color&quot; format=&quot;color&quot; /&gt; &lt;!--星期栏文本颜色--&gt;
+    &lt;attr name=&quot;week_text_size&quot; format=&quot;dimension&quot; /&gt;&lt;!--星期栏文本大小--&gt;
+
+    &lt;attr name=&quot;current_day_text_color&quot; format=&quot;color&quot; /&gt; &lt;!--今天的文本颜色--&gt;
+    &lt;attr name=&quot;current_day_lunar_text_color&quot; format=&quot;color&quot; /&gt;&lt;!--今天的农历文本颜色--&gt;
+
+    &lt;attr name=&quot;calendar_height&quot; format=&quot;string&quot; /&gt; &lt;!--日历每项的高度，56dp--&gt;
+    &lt;attr name=&quot;day_text_size&quot; format=&quot;string&quot; /&gt; &lt;!--天数文本大小--&gt;
+    &lt;attr name=&quot;lunar_text_size&quot; format=&quot;string&quot; /&gt; &lt;!--农历文本大小--&gt;
+
+    &lt;attr name=&quot;scheme_text&quot; format=&quot;string&quot; /&gt; &lt;!--标记文本--&gt;
+    &lt;attr name=&quot;scheme_text_color&quot; format=&quot;color&quot; /&gt; &lt;!--标记文本颜色--&gt;
+    &lt;attr name=&quot;scheme_month_text_color&quot; format=&quot;color&quot; /&gt; &lt;!--标记天数文本颜色--&gt;
+    &lt;attr name=&quot;scheme_lunar_text_color&quot; format=&quot;color&quot; /&gt; &lt;!--标记农历文本颜色--&gt;
+
+    &lt;attr name=&quot;scheme_theme_color&quot; format=&quot;color&quot; /&gt; &lt;!--标记的颜色--&gt;
+
+    &lt;attr name=&quot;selected_theme_color&quot; format=&quot;color&quot; /&gt; &lt;!--选中颜色--&gt;
+    &lt;attr name=&quot;selected_text_color&quot; format=&quot;color&quot; /&gt; &lt;!--选中文本颜色--&gt;
+    &lt;attr name=&quot;selected_lunar_text_color&quot; format=&quot;color&quot; /&gt; &lt;!--选中农历文本颜色--&gt;
+
+    &lt;attr name=&quot;current_month_text_color&quot; format=&quot;color&quot; /&gt; &lt;!--当前月份的字体颜色--&gt;
+    &lt;attr name=&quot;other_month_text_color&quot; format=&quot;color&quot; /&gt; &lt;!--其它月份的字体颜色--&gt;
+
+    &lt;attr name=&quot;current_month_lunar_text_color&quot; format=&quot;color&quot; /&gt; &lt;!--当前月份农历节假日颜色--&gt;
+    &lt;attr name=&quot;other_month_lunar_text_color&quot; format=&quot;color&quot; /&gt; &lt;!--其它月份农历节假日颜色--&gt;
+
+    &lt;!-- 年视图相关 --&gt;
+    &lt;attr name=&quot;year_view_month_text_size&quot; format=&quot;dimension&quot; /&gt; &lt;!-- 年视图月份字体大小 --&gt;
+    &lt;attr name=&quot;year_view_day_text_size&quot; format=&quot;dimension&quot; /&gt; &lt;!-- 年视图月份日期字体大小 --&gt;
+    &lt;attr name=&quot;year_view_month_text_color&quot; format=&quot;color&quot; /&gt; &lt;!-- 年视图月份字体颜色 --&gt;
+    &lt;attr name=&quot;year_view_day_text_color&quot; format=&quot;color&quot; /&gt; &lt;!-- 年视图日期字体颜色 --&gt;
+    &lt;attr name=&quot;year_view_scheme_color&quot; format=&quot;color&quot; /&gt; &lt;!-- 年视图标记颜色 --&gt;
+
+    &lt;attr name=&quot;min_year&quot; format=&quot;integer&quot; /&gt;  &lt;!--最小年份1900--&gt;
+    &lt;attr name=&quot;max_year&quot; format=&quot;integer&quot; /&gt;  &lt;!--最大年份2099--&gt;
+    &lt;attr name=&quot;min_year_month&quot; format=&quot;integer&quot; /&gt; &lt;!--最小年份对应月份--&gt;
+    &lt;attr name=&quot;max_year_month&quot; format=&quot;integer&quot; /&gt; &lt;!--最大年份对应月份--&gt;
+
+    &lt;!--月视图是否可滚动--&gt;
+    &lt;attr name=&quot;month_view_scrollable&quot; format=&quot;boolean&quot; /&gt;
+    &lt;!--周视图是否可滚动--&gt;
+    &lt;attr name=&quot;week_view_scrollable&quot; format=&quot;boolean&quot; /&gt;
+    &lt;!--年视图是否可滚动--&gt;
+    &lt;attr name=&quot;year_view_scrollable&quot; format=&quot;boolean&quot; /&gt;
+
+    &lt;!--配置你喜欢的月视图显示模式模式--&gt;
+    &lt;attr name=&quot;month_view_show_mode&quot;&gt;
+         &lt;enum name=&quot;mode_all&quot; value=&quot;0&quot; /&gt; &lt;!--全部显示--&gt;
+         &lt;enum name=&quot;mode_only_current&quot; value=&quot;1&quot; /&gt; &lt;!--仅显示当前月份--&gt;
+         &lt;enum name=&quot;mode_fix&quot; value=&quot;2&quot; /&gt; &lt;!--自适应显示，不会多出一行，但是会自动填充--&gt;
+    &lt;/attr&gt;
+
+    &lt;!-- 自定义周起始 --&gt;
+    &lt;attr name=&quot;week_start_with&quot;&gt;
+         &lt;enum name=&quot;sun&quot; value=&quot;1&quot; /&gt;
+         &lt;enum name=&quot;mon&quot; value=&quot;2&quot; /&gt;
+         &lt;enum name=&quot;sat&quot; value=&quot;7&quot; /&gt;
+    &lt;/attr&gt;
+
+    &lt;!-- 自定义选择模式 --&gt;
+    &lt;attr name=&quot;select_mode&quot;&gt;
+          &lt;enum name=&quot;default_mode&quot; value=&quot;0&quot; /&gt;
+          &lt;enum name=&quot;single_mode&quot; value=&quot;1&quot; /&gt;
+          &lt;enum name=&quot;range_mode&quot; value=&quot;2&quot; /&gt;
+    &lt;/attr&gt;
+
+    &lt;!-- 当 select_mode=range_mode --&gt;
+    &lt;attr name=&quot;min_select_range&quot; format=&quot;integer&quot; /&gt;
+    &lt;attr name=&quot;max_select_range&quot; format=&quot;integer&quot; /&gt;
+</code></pre>
+</declare-styleable>
+CalendarView api
+public void setRange(int minYear, int minYearMonth, int minYearDay,
+                     int maxYear, int maxYearMonth, int maxYearDay) ;//置日期范围
+
+<p>public int getCurDay(); //今天<br>public int getCurMonth(); //当前的月份<br>public int getCurYear(); //今年</p>
+<p>public boolean isYearSelectLayoutVisible();//年月份选择视图是否打开<br>public void closeYearSelectLayout();//关闭年月视图选择布局<br>public void showYearSelectLayout(final int year); //快速弹出年份选择月份</p>
+<p>public void setOnMonthChangeListener(OnMonthChangeListener listener);//月份改变事件</p>
+<p>public void setOnYearChangeListener(OnYearChangeListener listener);//年份切换事件</p>
+<p>public void setOnCalendarSelectListener(OnCalendarSelectListener listener)//日期选择事件</p>
+<p>public void setOnCalendarLongClickListener(OnCalendarLongClickListener listener);//日期长按事件</p>
+<p>public void setOnCalendarLongClickListener(OnCalendarLongClickListener listener, boolean preventLongPressedSelect);//日期长按事件</p>
+<p>public void setOnCalendarInterceptListener(OnCalendarInterceptListener listener);//日期拦截和日期有效性绘制</p>
+<p>public void setSchemeDate(Map&lt;String, Calendar&gt; mSchemeDates);//标记日期</p>
+<p>public void update();//动态更新</p>
+<p>public Calendar getSelectedCalendar(); //获取选择的日期</p>
+<p>/**</p>
+<ul>
+<li>特别的，如果你需要自定义或者使用其它选择器，可以用以下方法进行和日历联动</li>
+<li>/<br>public void scrollToCurrent();//滚动到当前日期</li>
+</ul>
+<p>public void scrollToCurrent(boolean smoothScroll);//滚动到当前日期</p>
+<p>public void scrollToYear(int year);//滚动到某一年</p>
+<p>public void scrollToPre();//滚动到上一个月</p>
+<p>public void scrollToNext();//滚动到下一个月</p>
+<p>public void scrollToCalendar(int year, int month, int day);//滚动到指定日期</p>
+<p>public Calendar getMinRangeCalendar();//获得最小范围日期</p>
+<p>public Calendar getMaxRangeCalendar();//获得最大范围日期</p>
+<p>/**</p>
+<ul>
+<li>设置背景色</li>
+<li></li>
+<li>@param monthLayoutBackground 月份卡片的背景色</li>
+<li>@param weekBackground        星期栏背景色</li>
+<li>@param lineBg                线的颜色</li>
+<li>/<br>public void setBackground(int monthLayoutBackground, int weekBackground, int lineBg)</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>设置文本颜色</li>
+<li></li>
+<li>@param curMonthTextColor 当前月份字体颜色</li>
+<li>@param otherMonthColor   其它月份字体颜色</li>
+<li>@param lunarTextColor    农历字体颜色</li>
+<li>/<br>public void setTextColor(int curMonthTextColor,int otherMonthColor,int lunarTextColor)</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>设置选择的效果</li>
+<li></li>
+<li>@param style              选中的style CalendarCardView.STYLE_FILL or CalendarCardView.STYLE_STROKE</li>
+<li>@param selectedThemeColor 选中的标记颜色</li>
+<li>@param selectedTextColor  选中的字体颜色</li>
+<li>/<br>public void setSelectedColor(int style, int selectedThemeColor, int selectedTextColor)</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>设置标记的色</li>
+<li></li>
+<li>@param style           标记的style CalendarCardView.STYLE_FILL or CalendarCardView.STYLE_STROKE</li>
+<li>@param schemeColor     标记背景色</li>
+<li>@param schemeTextColor 标记字体颜色</li>
+<li>/<br>public void setSchemeColor(int style, int schemeColor, int schemeTextColor)</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>设置星期栏的背景和字体颜色</li>
+<li></li>
+<li>@param weekBackground 背景色</li>
+<li>@param weekTextColor  字体颜色</li>
+<li>/<br>public void setWeeColor(int weekBackground, int weekTextColor)<br>CalendarLayout api<br>public void expand(); //展开</li>
+</ul>
+<p>public void shrink(); //收缩</p>
+<p>public boolean isExpand();//是否展开了<br>CalendarLayout attrs</p>
+<!-- 日历显示模式 -->
+<attr name="calendar_show_mode">
+      <enum name="both_month_week_view" value="0" /><!-- 默认都有 -->
+      <enum name="only_week_view" value="1" /><!-- 仅周视图 -->
+      <enum name="only_month_view" value="2" /><!-- 仅月视图 -->
+</attr>
+
+<attr name="default_status">
+      <enum name="expand" value="0" /> <!--默认展开-->
+      <enum name="shrink" value="1" /><!--默认搜索-->
+</attr>
+
+<attr name="calendar_content_view_id" format="integer" />
+
+<p>&lt;项目地址：<a target="_blank" rel="noopener" href="https://github.com/Visen123/CalendarView&gt;">https://github.com/Visen123/CalendarView&gt;</a></p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2020/08/20/Android-%E9%AB%98%E6%95%88%E7%9A%84SQLite%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93greenDAO%E4%BD%BF%E7%94%A8/" class="pre-post btn btn-default" title='Android 高效的SQLite型数据库greenDAO使用'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            Android 高效的SQLite型数据库greenDAO使用</span>
+    </a>
+    
+    
+    <a href="/2020/08/20/%E7%BC%96%E5%86%99%E4%BD%BF%E7%94%A8Android-%E7%B3%BB%E7%BB%9F%E8%87%AA%E5%B8%A6%E7%9A%84%E6%96%87%E5%AD%97%E8%BD%AC%E8%AF%AD%E9%9F%B3%E4%BB%A3%E7%A0%81/" class="next-post btn btn-default" title='编写使用Android 系统自带的文字转语音代码'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            编写使用Android 系统自带的文字转语音代码</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    
+<div class="utteranc">
+  
+  <script
+    src='https://utteranc.es/client.js'
+    repo='yansil/snippet-comment'
+    issue-term='pathname'
+    issue-number=''
+    theme='github-light'
+    label=''
+    crossorigin='anonymous'
+    async
+  ></script>
+</div>
+
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <p>暂无目录</p>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2021
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>

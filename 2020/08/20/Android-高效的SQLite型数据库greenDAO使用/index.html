@@ -1,0 +1,519 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="清风明月博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.3.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://YanSil.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="Android" />
+
+
+<meta name="description" content="使用：在你project项目的build.gradle配置如下：buildscript {repositories {mavenCentral()}dependencies {classpath..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    Android 高效的SQLite型数据库greenDAO使用 |
+    
+    清风明月博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="清风明月博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    https://hexo-theme-snippet-1251680922.cos.ap-beijing.myqcloud.com/img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='严益云'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://YanSil.github.io">
+                        清风明月博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Android 高效的SQLite型数据库greenDAO使用">
+            
+            Android 高效的SQLite型数据库greenDAO使用
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/Android/">Android</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2020/08/20</span>
+    </span>
+    
+    
+</div>
+        
+        
+        <p class="fa fa-exclamation-triangle warning">
+            本文于<strong>
+                376</strong>
+            天之前发表，文中内容可能已经过时。
+        </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>使用：<br>在你project项目的build.gradle配置如下：<br>buildscript {<br>repositories {<br>mavenCentral()<br>}<br>dependencies {<br>classpath ‘org.greenrobot:greendao-gradle-plugin:3.2.2’<br>}<br>}</p>
+<p>// 使用数据库升级辅助GreenDaoUpgradeHelper时添加<br>allprojects {<br>repositories {<br>maven { url “<a target="_blank" rel="noopener" href="https://jitpack.io&quot;/">https://jitpack.io&quot;</a> }<br>}<br>}</p>
+<p>在你的modules 里app/build.gradle里配置如下：</p>
+<p>apply plugin: ‘org.greenrobot.greendao’</p>
+<p>dependencies {<br>compile ‘org.greenrobot:greendao:3.2.2’</p>
+<p>// 使用数据库加密时添加<br>compile ‘net.zetetic:android-database-sqlcipher:3.5.6’</p>
+<p>// 使用数据库升级辅助GreenDaoUpgradeHelper时添加<br>compile ‘com.github.yuweiguocn:GreenDaoUpgradeHelper:v2.0.1’</p>
+<p>}</p>
+<p>greendao {<br>schemaVersion 1<br>daoPackage ‘com.greendao.db<br>targetGenDir ‘src/main/java’<br>}</p>
+<pre><code> 首先，新建datamodel包，用以包含DaoMaster、DaoSession、bean和beanDao等。br/&gt;     然后新建Area实体类，代码如下：
+</code></pre>
+<p>@Entity<br>public class Area {br/&gt;@Id<br>private String AreaCode;<br>private String AreaName;<br>}<br>     最后，Build-&gt;Make Module ‘app’，即可自动生成DaoMaster、DaoSession、Area和AreaDao。此时Area实体类的代码如下：br/&gt;@Entity<br>public class Area {br/&gt;@Id<br>private String AreaCode;<br>private String AreaName;<br>@Generated(hash = 262290694)<br>public Area(String AreaCode, String AreaName) {<br>this.AreaCode = AreaCode;<br>this.AreaName = AreaName;<br>}<br>@Generated(hash = 179626505)<br>public Area() {<br>}<br>public String getAreaCode() {<br>return this.AreaCode;<br>}<br>public void setAreaCode(String AreaCode) {<br>this.AreaCode = AreaCode;<br>}<br>public String getAreaName() {<br>return this.AreaName;<br>}<br>public void setAreaName(String AreaName) {<br>this.AreaName = AreaName;<br>}<br>}<br>     添加其他实体类的方法与Area一样。需要注意的是，不要手动修改DaoMaster、DaoSession、bean和beanDao的代码，因为每一次编译项目，都会重新生成一次DaoMaster、DaoSession、bean和beanDao。如果修改的话，就会被覆盖掉。<br>     为了便于数据的读取和添加，新建GreenDaoHelper辅助类，代码如下：<br>public class GreenDaoHelper extends Application {<br>private GreenDaoHelper Instance;<br>private static DaoMaster daoMaster;<br>private static DaoSession daoSession;</p>
+<p>public GreenDaoHelper getInstance() {<br>    if (Instance == null) {<br>        Instance = this;<br>    }<br>    return Instance;<br>}</p>
+<p>/**</p>
+<ul>
+<li>获取DaoMaster</li>
+<li></li>
+<li>@param context</li>
+<li>@return</li>
+<li>/<br>public static DaoMaster getDaoMaster(Context context) {<br>   if (daoMaster == null) {<pre><code>   try&#123;
+       DaoMaster.OpenHelper helper = new DaoMaster.DevOpenHelper(context,&quot;test.db&quot;,null);
+       daoMaster = new DaoMaster(helper.getWritableDatabase()); //获取未加密的数据库
+   &#125;catch (Exception e)&#123;
+       e.printStackTrace();
+   &#125;
+</code></pre>
+   }<br>   return daoMaster;<br>}</li>
+</ul>
+<p>/**</p>
+<ul>
+<li><p>获取DaoSession对象</p>
+</li>
+<li></li>
+<li><p>@param context</p>
+</li>
+<li><p>@return</p>
+</li>
+<li><p>/<br>public static DaoSession getDaoSession(Context context) {</p>
+<p>   if (daoSession == null) {</p>
+<pre><code>   if (daoMaster == null) &#123;
+       getDaoMaster(context);
+   &#125;
+   daoSession = daoMaster.newSession();
+</code></pre>
+<p>   }<br>   return daoSession;<br>}</p>
+</li>
+</ul>
+<p>}<br>      在读写数据库之前，要添加读写权限：<br><uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /><br><uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /><br>     在MainActivity.java中添加读写代码：<br>public class MainActivity extends AppCompatActivity {</p>
+<p>private TextView textview;<br>private DaoSession session;</p>
+<p>@Override<br>protected void onCreate(Bundle savedInstanceState) {<br>    super.onCreate(savedInstanceState);<br>    setContentView(R.layout.activity_main);</p>
+<pre><code>textview=(TextView)findViewById(R.id.textview);
+
+session = GreenDaoHelper.getDaoSession(this);
+session.getAreaDao().deleteAll();//清空所有记录
+
+//添加记录
+Area area = new Area(&quot;01&quot;,&quot;北京&quot;);
+Area area1 = new Area(&quot;02&quot;,&quot;天津&quot;);
+session.getAreaDao().insert(area);
+session.getAreaDao().insert(area1);
+
+//查询记录
+StringBuilder stringBuilder = new StringBuilder();
+List&lt;Area&gt; areas = session.getAreaDao().loadAll();
+for (int i = 0,n = areas.size();i&lt;n;++i)&#123;
+    stringBuilder.append(&quot;地区编码：&quot;).append(areas.get(i).getAreaCode())
+            .append(&quot;，地区名称：&quot;).append(areas.get(i).getAreaName()).append(&quot;\n&quot;);
+&#125;
+
+textview.setText(stringBuilder);
+</code></pre>
+<p>}</p>
+<p>}<br>     运行结果如下图所示：</p>
+<p>修改数据库文件路径：<br>     默认情况下，新创建的数据存储在data的包名目录下，设备如果不root的话，是无法查看SQLite数据库文件的。而实际应用中，我们往往需要copy数据库，或借用第三方工具查阅或编辑数据库内容。此时我们可以通过重写Context的getDatabasePath(String name)、openOrCreateDatabase(String name, int mode, CursorFactory factory)、openOrCreateDatabase(String name, int mode, CursorFactory factory, DatabaseErrorHandler errorHandler)等三个方法来修改SQLite文件的存储路径。</p>
+<p>public class GreenDaoHelper extends Application {<br>private GreenDaoHelper Instance;<br>private static DaoMaster daoMaster;<br>private static DaoSession daoSession;</p>
+<p>public GreenDaoHelper getInstance() {<br>    if (Instance == null) {<br>        Instance = this;<br>    }<br>    return Instance;<br>}</p>
+<p>/**</p>
+<ul>
+<li><p>获取DaoMaster</p>
+</li>
+<li></li>
+<li><p>@param context</p>
+</li>
+<li><p>@return</p>
+</li>
+<li><p>/<br>public static DaoMaster getDaoMaster(Context context) {</p>
+<p>   if (daoMaster == null) {</p>
+<pre><code>   try&#123;
+       ContextWrapper wrapper = new ContextWrapper(context) &#123;
+       /**
+       * 获得数据库路径，如果不存在，则创建对象对象
+       *
+       * @param name
+       */
+       @Override
+       public File getDatabasePath(String name) &#123;
+           // 判断是否存在sd卡
+           boolean sdExist = android.os.Environment.MEDIA_MOUNTED.equals(android.os.Environment.getExternalStorageState());
+           if (!sdExist) &#123;// 如果不存在,
+               Log.e(&quot;SD卡管理：&quot;, &quot;SD卡不存在，请加载SD卡&quot;);
+               return null;
+           &#125; else &#123;// 如果存在
+               // 获取sd卡路径
+               String dbDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
+               dbDir += &quot;/Android&quot;;// 数据库所在目录
+               String dbPath = dbDir + &quot;/&quot; + name;// 数据库路径
+               // 判断目录是否存在，不存在则创建该目录
+               File dirFile = new File(dbDir);
+               if (!dirFile.exists())
+                   dirFile.mkdirs();
+
+               // 数据库文件是否创建成功
+               boolean isFileCreateSuccess = false;
+               // 判断文件是否存在，不存在则创建该文件
+               File dbFile = new File(dbPath);
+               if (!dbFile.exists()) &#123;
+                   try &#123;
+                       isFileCreateSuccess = dbFile.createNewFile();// 创建文件
+                   &#125; catch (IOException e) &#123;
+                       e.printStackTrace();
+                   &#125;
+               &#125; else
+                   isFileCreateSuccess = true;
+               // 返回数据库文件对象
+               if (isFileCreateSuccess)
+                   return dbFile;
+               else
+                   return super.getDatabasePath(name);
+           &#125;
+       &#125;
+
+       /**
+       * 重载这个方法，是用来打开SD卡上的数据库的，android 2.3及以下会调用这个方法。
+       *
+       * @param name
+       * @param mode
+       * @param factory
+       */
+       @Override
+       public SQLiteDatabase openOrCreateDatabase(String name, int mode, SQLiteDatabase.CursorFactory factory) &#123;
+           return SQLiteDatabase.openOrCreateDatabase(getDatabasePath(name), null);
+       &#125;
+
+       /**
+       * Android 4.0会调用此方法获取数据库。
+       *
+       * @see android.content.ContextWrapper#openOrCreateDatabase(java.lang.String,
+       *      int,
+       *      android.database.sqlite.SQLiteDatabase.CursorFactory,
+       *      android.database.DatabaseErrorHandler)
+       * @param name
+       * @param mode
+       * @param factory
+       * @param errorHandler
+       */
+       @Override
+       public SQLiteDatabase openOrCreateDatabase(String name, int mode, SQLiteDatabase.CursorFactory factory, DatabaseErrorHandler errorHandler) &#123;
+           return SQLiteDatabase.openOrCreateDatabase(getDatabasePath(name), null);
+       &#125;
+       &#125;;
+       DaoMaster.OpenHelper helper = new DaoMaster.DevOpenHelper(wrapper,&quot;test.db&quot;,null);
+       daoMaster = new DaoMaster(helper.getWritableDatabase()); //获取未加密的数据库
+   &#125;catch (Exception e)&#123;
+       e.printStackTrace();
+   &#125;
+</code></pre>
+<p>   }<br>   return daoMaster;<br>}</p>
+</li>
+</ul>
+<p>/**</p>
+<ul>
+<li><p>获取DaoSession对象</p>
+</li>
+<li></li>
+<li><p>@param context</p>
+</li>
+<li><p>@return</p>
+</li>
+<li><p>/<br>public static DaoSession getDaoSession(Context context) {</p>
+<p>   if (daoSession == null) {</p>
+<pre><code>   if (daoMaster == null) &#123;
+       getDaoMaster(context);
+   &#125;
+   daoSession = daoMaster.newSession();
+</code></pre>
+<p>   }</p>
+<p>   return daoSession;<br>}</p>
+</li>
+</ul>
+<p>}</p>
+<p>版本升级更新<br>比如需要在实体类加一个字段 或者 改变字段属性等 就需要版本更新来保存以前的数据了；</p>
+<p>public class Helper extends DaoMaster.OpenHelper{</p>
+<p>private static DaoMaster daoMaster;<br>private static DaoSession daoSession;</p>
+<p>public static final String DBNAME = “greendao.db”;</p>
+<p>public Helper(Context context){<br>    super(context,DBNAME,null);<br>}</p>
+<p>@Override<br>public void onUpgrade(Database db, int oldVersion, int newVersion) {<br>    super.onUpgrade(db, oldVersion, newVersion);<br>    Log.i(“version”, oldVersion + “—先前和更新之后的版本—“ + newVersion);<br>    if (oldVersion &lt; newVersion) {<br>        Log.i(“version”, oldVersion + “—先前和更新之后的版本—“ + newVersion);<br>        MigrationHelper.getInstance().migrate(db, UserDao.class);<br>        //更改过的实体类(新增的不用加)   更新UserDao文件 可以添加多个  XXDao.class 文件</p>
+<p>// MigrationHelper.getInstance().migrate(db, UserDao.class,XXDao.class);<br>}<br>}</p>
+<p>/**</p>
+<ul>
+<li>取得DaoMaster</li>
+<li></li>
+<li>@param context</li>
+<li>@return</li>
+<li>/<br>public static DaoMaster getDaoMaster(Context context) {<br>  if (daoMaster == null) {<pre><code>  DaoMaster.OpenHelper helper = new DaoMaster.DevOpenHelper(context,
+          DBNAME, null);
+  daoMaster = new DaoMaster(helper.getWritableDatabase());
+</code></pre>
+  }<br>  return daoMaster;<br>}</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>取得DaoSession</li>
+<li></li>
+<li>@param context</li>
+<li>@return</li>
+<li>/<br>public static DaoSession getDaoSession(Context context) {<br>  if (daoSession == null) {<pre><code>  if (daoMaster == null) &#123;
+      daoMaster = getDaoMaster(context);
+  &#125;
+  daoSession = daoMaster.newSession();
+</code></pre>
+  }<br>  return daoSession;<br>}</li>
+</ul>
+<p>}</p>
+<p>public class GreenApplication extends Application {<br>private DaoMaster.DevOpenHelper mHelper;<br>//private Helper mHelper;<br>private SQLiteDatabase db;<br>private DaoMaster mDaoMaster;<br>private DaoSession mDaoSession;<br>public static GreenApplication instances;<br>@Override public void onCreate() {<br>super.onCreate();<br>instances = this;<br>setDatabase();<br>}<br>public static GreenApplication getInstances(){<br>return instances;<br>}</p>
+<p>/**<br>•设置greenDao<br>*/<br>private void setDatabase() {<br>// 通过 DaoMaster 的内部类 DevOpenHelper，你可以得到一个便利的 SQLiteOpenHelper 对象。<br>// 可能你已经注意到了，你并不需要去编写「CREATE TABLE」这样的 SQL 语句，因为 greenDAO 已经帮你做了。<br>// 注意：默认的 DaoMaster.DevOpenHelper 会在数据库升级时，删除所有的表，意味着这将导致数据的丢失。<br>// 所以，在正式的项目中，你还应该做一层封装，来实现数据库的安全升级。<br>　　 mHelper = new Helper(new GreenDaoUtils(this));</p>
+<p>　　<br>//mHelper = new DaoMaster.DevOpenHelper(this, “notes-db”, null);<br>db = mHelper.getWritableDatabase();<br>// 注意：该数据库连接属于 DaoMaster，所以多个 Session 指的是相同的数据库连接。<br>mDaoMaster = new DaoMaster(db);<br>mDaoSession = mDaoMaster.newSession();<br>}<br>public DaoSession getDaoSession() {<br>return mDaoSession;<br>}<br>public SQLiteDatabase getDb() {<br>return db;<br>}<br>}</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2020/08/21/%E5%88%86%E4%BA%ABAndroid%E7%9F%AD%E8%A7%86%E9%A2%91%E5%88%B6%E4%BD%9C/" class="pre-post btn btn-default" title='分享Android短视频制作'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            分享Android短视频制作</span>
+    </a>
+    
+    
+    <a href="/2020/08/20/android%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BC%98%E9%9B%85%E6%97%A5%E5%8E%86/" class="next-post btn btn-default" title='android自定义优雅日历'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            android自定义优雅日历</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    
+<div class="utteranc">
+  
+  <script
+    src='https://utteranc.es/client.js'
+    repo='yansil/snippet-comment'
+    issue-term='pathname'
+    issue-number=''
+    theme='github-light'
+    label=''
+    crossorigin='anonymous'
+    async
+  ></script>
+</div>
+
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <p>暂无目录</p>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2021
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>

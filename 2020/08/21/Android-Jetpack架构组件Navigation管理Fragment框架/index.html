@@ -1,0 +1,391 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="清风明月博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.3.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://YanSil.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="Android" />
+
+
+<meta name="description" content="Navigation目前仅AndroidStudio 3.2以上版本支持，如果您的版本不足3.2， 下载AndroidStudio3.2以上版本。官网下载地址：https://developer..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    Android Jetpack架构组件Navigation管理Fragment框架 |
+    
+    清风明月博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="清风明月博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    https://hexo-theme-snippet-1251680922.cos.ap-beijing.myqcloud.com/img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='严益云'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://YanSil.github.io">
+                        清风明月博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Android Jetpack架构组件Navigation管理Fragment框架">
+            
+            Android Jetpack架构组件Navigation管理Fragment框架
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/Android/">Android</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2020/08/21</span>
+    </span>
+    
+    
+</div>
+        
+        
+        <p class="fa fa-exclamation-triangle warning">
+            本文于<strong>
+                375</strong>
+            天之前发表，文中内容可能已经过时。
+        </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>Navigation目前仅AndroidStudio 3.2以上版本支持，如果您的版本不足3.2， 下载AndroidStudio3.2以上版本。<br>官网下载地址：<a target="_blank" rel="noopener" href="https://developer.android.google.cn/studio/">https://developer.android.google.cn/studio/</a></p>
+<p>快速开发， 组件可单独使用，也可以同时工作。 消除样板 ，让代码Android 架构Jetpack管理乏味的活动事件，比如后台任务、导航和生命周期管理。这样你可以专注于让你的app更棒的东西，构建高质量、健壮的app 基于现代设计实践，Android Jetpack组件可以减少崩溃和内存泄漏，且向后兼容。接下来讲述Navigation的使用以及如何管理多个Fragment等</p>
+<p>项目builde.gradle文件需配置：</p>
+<p>implementation “androidx.navigation:navigation-fragment-ktx:2.3.0-alpha05”<br>implementation “androidx.navigation:navigation-ui-ktx:2.3.0-alpha05”</p>
+<p>1.创建MainActivity和布局文件activity_navigation布局里配置:</p>
+<p>activity_navigation.xml布局配置：</p>
+<p>  <fragment
+    android:id="@+id/my_nav_host_fragment"
+    android:name="androidx.navigation.fragment.NavHostFragment"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    app:defaultNavHost="true"
+    app:navGraph="@navigation/mobile_navigation" /></p>
+<p> &lt;com.google.android.material.bottomnavigation.BottomNavigationView<br>             android:id=”@+id/bottom_nav_view”<br>             android:layout_width=”match_parent”<br>             android:layout_height=”wrap_content”<br>             app:labelVisibilityMode=”labeled”<br>            app:menu=”@menu/bottom_nav_menu” /&gt;</p>
+<p>MainActivity里配置：</p>
+<p>  val host: NavHostFragment = supportFragmentManager<br>        .findFragmentById(R.id.my_nav_host_fragment) as NavHostFragment? ?: return</p>
+<p>  val navController = host.navController</p>
+<p>  val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav_view)</p>
+<p>  bottomNav?.setupWithNavController(navController)</p>
+<p>2、新建HomeFragment、FlowStepFragment、FlowStepFragment、SettingsFragment、DeepLinkFragment在Fragment片段里跳片段方法</p>
+<p>方法1： view.findViewById(R.id.navigate_destination_button).setOnClickListener( Navigation.createNavigateOnClickListener(R.id.next_action) )</p>
+<p>方法2： view.findViewById(R.id.navigate_destination_button)?.setOnClickListener { findNavController().navigate(R.id.flow_step_one_dest, null, null) }</p>
+<p>3、在res里新建文件夹navigation 类型选择Navigation，然后在这个文件夹里创建mobile_navigation.xml</p>
+<p>在mobile_navigation.xml里写入要跳转的各个片段Fragment及要传递的参数： startDestination默认第一个跳的片段id<br>destination跳到另外一个片段id<br>action 隐式跳转 ，argType传递参数类型，defaultValue传递参数值</p>
+<?xml version="1.0" encoding="utf-8"?>
+<p><navigation xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+app:startDestination="@+id/home_dest"></p>
+<p><fragment
+    android:id="@+id/home_dest"
+    android:name="com.my.navigation.HomeFragment"
+    android:label="@string/home"
+    tools:layout="@layout/home_fragment"></p>
+<pre><code>&lt;!--todo destination隐式跳转到Fragement id=flow_step_one_dest --&gt;
+&lt;action
+    android:id=&quot;@+id/next_action&quot;
+    app:destination=&quot;@+id/flow_step_one_dest&quot;
+    app:enterAnim=&quot;@anim/slide_in_right&quot;
+    app:exitAnim=&quot;@anim/slide_out_left&quot;
+    app:popEnterAnim=&quot;@anim/slide_in_left&quot;
+    app:popExitAnim=&quot;@anim/slide_out_right&quot; /&gt;
+</code></pre>
+</fragment>
+
+<p><fragment
+    android:id="@+id/flow_step_one_dest"
+    android:name="com.my.navigation.FlowStepFragment"
+    tools:layout="@layout/flow_step_one_fragment"><br>    <argument
+        android:name="flowStepNumber"
+        app:argType="integer"
+        android:defaultValue="1"/></p>
+<pre><code>&lt;action
+    android:id=&quot;@+id/next_action&quot;
+    app:destination=&quot;@+id/flow_step_two_dest&quot;&gt;
+&lt;/action&gt;
+</code></pre>
+</fragment>
+
+<p><fragment
+    android:id="@+id/flow_step_two_dest"
+    android:name="com.my.navigation.FlowStepFragment"
+    tools:layout="@layout/flow_step_two_fragment"></p>
+<pre><code>&lt;argument
+    android:name=&quot;flowStepNumber&quot;
+    app:argType=&quot;integer&quot;
+    android:defaultValue=&quot;2&quot;/&gt;
+
+&lt;action
+    android:id=&quot;@+id/next_action&quot;
+    app:destination=&quot;@+id/settings_dest&quot;&gt;
+&lt;/action&gt;
+</code></pre>
+</fragment>
+
+<p><fragment
+    android:id="@+id/settings_dest"
+    android:name="com.my.navigation.SettingsFragment"
+    android:label="@string/settings"
+    tools:layout="@layout/settings_fragment" ><br>    <action
+        android:id="@+id/next_action"
+        app:destination="@+id/deeplink_dest"><br>    </action><br></fragment></p>
+<pre><code>&lt;fragment
+    android:id=&quot;@+id/deeplink_dest&quot;
+    android:name=&quot;com.my.navigation.DeepLinkFragment&quot;
+    android:label=&quot;@string/deeplink&quot;
+    tools:layout=&quot;@layout/deeplink_fragment&quot;&gt;
+
+    &lt;argument
+        android:name=&quot;myarg&quot;
+        android:defaultValue=&quot;Android!&quot;/&gt;
+
+&lt;/fragment&gt;
+</code></pre>
+</navigation>
+<!--项目地址：https://github.com/Visen123/MyNavigation-->
+
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2021/08/26/categories/%E5%89%8D%E7%AB%AF/WEB%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF/" class="pre-post btn btn-default" title='WEB开发技术 知识点总结'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            WEB开发技术 知识点总结</span>
+    </a>
+    
+    
+    <a href="/2020/08/21/%E5%88%86%E4%BA%ABAndroid%E7%9F%AD%E8%A7%86%E9%A2%91%E5%88%B6%E4%BD%9C/" class="next-post btn btn-default" title='分享Android短视频制作'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            分享Android短视频制作</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    
+<div class="utteranc">
+  
+  <script
+    src='https://utteranc.es/client.js'
+    repo='yansil/snippet-comment'
+    issue-term='pathname'
+    issue-number=''
+    theme='github-light'
+    label=''
+    crossorigin='anonymous'
+    async
+  ></script>
+</div>
+
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <p>暂无目录</p>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2021
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>
