@@ -1,0 +1,451 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="清风明月博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.3.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://YanSil.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="Android" />
+
+
+<meta name="description" content="##在bulid.gradle文件中：
+###设置如下
+buildTypes {
+    release &#123;
+
+        minifyEnabled true
+
+        ..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    Android Studio中代码做混淆方法 |
+    
+    清风明月博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="清风明月博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    https://hexo-theme-snippet-1251680922.cos.ap-beijing.myqcloud.com/img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='严益云'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://YanSil.github.io">
+                        清风明月博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Android/"><i class="fa "></i>
+                                Android</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Android Studio中代码做混淆方法">
+            
+            Android Studio中代码做混淆方法
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/Android/">Android</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2021/06/20</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>##在bulid.gradle文件中：</p>
+<p>###设置如下</p>
+<p>buildTypes {</p>
+<pre><code>    release &#123;
+
+        minifyEnabled true
+
+        proguardFiles getDefaultProguardFile(&#39;proguard-android.txt&#39;), &#39;proguard-rules.pro&#39;
+
+    &#125;
+
+&#125;
+</code></pre>
+<p>在proguard-rules.pro文件中加入以下代码：</p>
+<p>##使用butterknife注入会导致ProGuard 认为变量未被使用，因此，需要在ProGuard 中加入如下字段</p>
+<p>-dontwarn butterknife.internal.**</p>
+<p>-keep class **$$ViewInjector { *; }</p>
+<p>-keepnames class * { @butterknife.InjectView *;}</p>
+<p>##==================gson==========================</p>
+<p>-dontwarn com.google.**</p>
+<p>-keep class com.google.gson.**{*;}</p>
+<p>##==================protobuf======================-</p>
+<p>-dontwarn com.google.**</p>
+<p>-keep class com.google.protobuf.** {*;}</p>
+<p>##集成百度地图SDK的应用，在打包混淆的时候，需要注意与地图SDK相关的方法不可被混淆，否则会出现网络不可用等运行时异常。混淆方法如下：</p>
+<p>-keep class com.baidu.** {*;}</p>
+<p>-keep class vi.com.** {*;}</p>
+<p>-dontwarn com.baidu.**</p>
+<p>-dontwarn com.baidu.mapapi.**</p>
+<p>-keep class com.baidu.mapapi.** {*; }</p>
+<p>-keep class assets.** {*; }</p>
+<p>-keep class vi.com.gdi.bgl.** {*; }</p>
+<p>##下面是常见的proguard.cfg配置项</p>
+<p>##指定代码的压缩级别</p>
+<p>-optimizationpasses 5</p>
+<p>##包名不混合大小写</p>
+<p>-dontusemixedcaseclassnames</p>
+<p>##不去忽略非公共的库类</p>
+<p>-dontskipnonpubliclibraryclasses</p>
+<p>##优化  不优化输入的类文件</p>
+<p>-dontoptimize</p>
+<p>##预校验</p>
+<p>-dontpreverify</p>
+<p>##混淆时是否记录日志</p>
+<p>-verbose</p>
+<p>##混淆时所采用的算法</p>
+<p>-optimizations !code/simplification/arithmetic,!field/<em>,!class/merging/</em></p>
+<p>##保护注解</p>
+<p>-keepattributes <em>Annotation</em></p>
+<h2 id="保持哪些类不被混淆"><a href="#保持哪些类不被混淆" class="headerlink" title="保持哪些类不被混淆"></a>保持哪些类不被混淆</h2><p>-keep public class * extends android.app.Fragment</p>
+<p>-keep public class * extends android.app.Activity</p>
+<p>-keep public class * extends android.app.Application</p>
+<p>-keep public class * extends android.app.Service</p>
+<p>-keep public class * extends android.content.BroadcastReceiver</p>
+<p>-keep public class * extends android.content.ContentProvider</p>
+<p>-keep public class * extends android.app.backup.BackupAgentHelper</p>
+<p>-keep public class * extends android.preference.Preference</p>
+<p>-keep public class * extends android.support.v4.**</p>
+<p>-keep public class com.android.vending.licensing.ILicensingService</p>
+<p>##如果有引用v4包可以添加下面这行</p>
+<p>-keep public class * extends android.support.v4.app.Fragment</p>
+<p>##########JS接口类不混淆，否则执行不了</p>
+<p>-dontwarn com.android.JsInterface.**</p>
+<p>-keep class com.android.JsInterface.** {*; }</p>
+<p>##极光推送和百度lbs android sdk一起使用proguard 混淆的问题#http的类被混淆后，导致apk定位失败，保持apache 的http类不被混淆就好了</p>
+<p>-dontwarn org.apache.**</p>
+<p>-keep class org.apache.**{ *; }</p>
+<p>##忽略警告</p>
+<p>-ignorewarning</p>
+<p>##记录生成的日志数据,gradle build时在本项目根目录输出##</p>
+<p>##apk 包内所有 class 的内部结构</p>
+<p>-dump class_files.txt</p>
+<p>##未混淆的类和成员-printseeds seeds.txt</p>
+<p>##列出从 apk 中删除的代码</p>
+<p>-printusage unused.txt</p>
+<p>##混淆前后的映射-printmapping mapping.txt</p>
+<p>########记录生成的日志数据，gradle build时 在本项目根目录输出-end#####</p>
+<p>######混淆保护自己项目的部分代码以及引用的第三方jar包library########</p>
+<p>##如果引用了v4或者v7包</p>
+<p>-dontwarn android.support.**</p>
+<p>####混淆保护自己项目的部分代码以及引用的第三方jar包library-end####</p>
+<p>-keep public class * extends android.view.View {</p>
+<p>  public <init>(android.content.Context);</p>
+<p>  public <init>(android.content.Context, android.util.AttributeSet);</p>
+<p>  public <init>(android.content.Context, android.util.AttributeSet, int);</p>
+<p>  public void set*(…);</p>
+<p> }</p>
+<p>#保持 native 方法不被混淆</p>
+<p>-keepclasseswithmembernames class * {</p>
+<p>  native <methods>;</p>
+<p>}</p>
+<p>#保持自定义控件类不被混淆</p>
+<p>-keepclasseswithmembers class * {</p>
+<p>  public <init>(android.content.Context, android.util.AttributeSet);</p>
+<p>}</p>
+<p>#保持自定义控件类不被混淆</p>
+<p>-keepclassmembers class * extends android.app.Activity {</p>
+<p>  public void *(android.view.View);</p>
+<p>}</p>
+<p>#保持 Parcelable 不被混淆</p>
+<p>-keep class * implements android.os.Parcelable {</p>
+<p>  public static final android.os.Parcelable$Creator *;</p>
+<p>}</p>
+<p>#保持 Serializable 不被混淆</p>
+<p>-keepnames class * implements java.io.Serializable</p>
+<p>#保持 Serializable 不被混淆并且enum 类也不被混淆</p>
+<p>-keepclassmembers class * implements java.io.Serializable {</p>
+<pre><code>static final long serialVersionUID;
+
+private static final java.io.ObjectStreamField[] serialPersistentFields;
+
+!static !transient &lt;fields&gt;;
+
+!private &lt;fields&gt;;
+
+!private &lt;methods&gt;;
+
+private void writeObject(java.io.ObjectOutputStream);
+
+private void readObject(java.io.ObjectInputStream);
+
+java.lang.Object writeReplace();
+
+java.lang.Object readResolve();
+</code></pre>
+<p>}</p>
+<p>#保持枚举 enum 类不被混淆 如果混淆报错，建议直接使用上面的 -keepclassmembers class * implements java.io.Serializable即可</p>
+<p>-keepclassmembers enum * {</p>
+<pre><code>  public static **[] values();
+
+  public static ** valueOf(java.lang.String);
+</code></pre>
+<p>}</p>
+<p>-keepclassmembers class * {</p>
+<pre><code>  public void *ButtonClicked(android.view.View);
+</code></pre>
+<p>}</p>
+<p>#不混淆资源类</p>
+<p>-keepclassmembers class **.R$* {</p>
+<pre><code>  public static &lt;fields&gt;;
+</code></pre>
+<p>}</p>
+<p>#避免混淆泛型 如果混淆报错建议关掉</p>
+<p>#–keepattributes Signature</p>
+<p>#如果用到Gson解析包的，直接添加下面这几行就能成功混淆，不然会报错</p>
+<p>#gson</p>
+<p>#-libraryjars libs/gson-2.2.2.jar</p>
+<p>-keepattributes Signature</p>
+<h1 id="Gson-specific-classes"><a href="#Gson-specific-classes" class="headerlink" title="Gson specific classes"></a>Gson specific classes</h1><p>-keep class sun.misc.Unsafe { *; }</p>
+<h1 id="Application-classes-that-will-be-serialized-deserialized-over-Gson"><a href="#Application-classes-that-will-be-serialized-deserialized-over-Gson" class="headerlink" title="Application classes that will be serialized/deserialized over Gson"></a>Application classes that will be serialized/deserialized over Gson</h1><p>-keep class com.google.gson.examples.android.model.** { *; }</p>
+<p>#客户端代码中的JavaBean(实体类)的类名与其字段名称全部变成了a、b、c、d等等字符串，这与服务端返回的json字符串中的不一致，导致解析失败。所以，解决的办法是：在进行混淆编译进行打包apk的时候，过滤掉存放所有JavaBean（实体类)的包不进行混淆编译</p>
+<p>-keep class com.android.model.** {*;}</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">清风明月</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2021/06/21/categories/Android/%E6%95%99%E4%BD%A0%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Bugly%E4%BF%AE%E5%A4%8D%E7%BA%BF%E4%B8%8A%E5%AE%89%E5%8D%93APP%E5%AD%98%E5%9C%A8%E7%9A%84bug/" class="pre-post btn btn-default" title='教你如何使用Bugly修复线上安卓APP存在的bug'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            教你如何使用Bugly修复线上安卓APP存在的bug</span>
+    </a>
+    
+    
+    <a href="/2020/08/25/categories/Android/Android%E6%9C%BA%E5%AD%90%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%E6%9C%80%E7%AE%80%E5%8D%95%E6%9C%80%E5%85%A8%E9%9D%A2%E6%96%B9%E6%A1%88/" class="next-post btn btn-default" title='Android机子屏幕适配最简单最全面方案'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            Android机子屏幕适配最简单最全面方案</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    
+<div class="utteranc">
+  
+  <script
+    src='https://utteranc.es/client.js'
+    repo='yansil/snippet-comment'
+    issue-term='pathname'
+    issue-number=''
+    theme='github-light'
+    label=''
+    crossorigin='anonymous'
+    async
+  ></script>
+</div>
+
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%9D%E6%8C%81%E5%93%AA%E4%BA%9B%E7%B1%BB%E4%B8%8D%E8%A2%AB%E6%B7%B7%E6%B7%86"><span class="toc-text">保持哪些类不被混淆</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Gson-specific-classes"><span class="toc-text">Gson specific classes</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Application-classes-that-will-be-serialized-deserialized-over-Gson"><span class="toc-text">Application classes that will be serialized&#x2F;deserialized over Gson</span></a>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2021
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//yansil.github.io" class="copyright-links" target="_blank" rel="nofollow">清风明月</a>
+                </span> |
+                <span>
+                    Theme by <a href="//yansil.github.io" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>

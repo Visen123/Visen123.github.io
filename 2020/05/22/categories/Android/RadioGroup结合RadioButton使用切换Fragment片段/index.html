@@ -1,0 +1,1055 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="清风明月博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.3.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://YanSil.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="Android" />
+
+
+<meta name="description" content="##界面布局activity_lan_qiu，代码xml设置如下：
+
+
+&lt;LinearLayout xmlns:android=”http://schemas.android.com/ap..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    RadioGroup结合RadioButton使用切换Fragment片段 |
+    
+    清风明月博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="清风明月博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    https://hexo-theme-snippet-1251680922.cos.ap-beijing.myqcloud.com/img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='严益云'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://YanSil.github.io">
+                        清风明月博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Android/"><i class="fa "></i>
+                                Android</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="RadioGroup结合RadioButton使用切换Fragment片段">
+            
+            RadioGroup结合RadioButton使用切换Fragment片段
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/Android/">Android</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2020/05/22</span>
+    </span>
+    
+    
+</div>
+        
+        
+        <p class="fa fa-exclamation-triangle warning">
+            本文于<strong>
+                466</strong>
+            天之前发表，文中内容可能已经过时。
+        </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>##界面布局activity_lan_qiu，代码xml设置如下：</p>
+<?xml version="1.0" encoding="utf-8"?>
+
+<p>&lt;LinearLayout xmlns:android=”<a target="_blank" rel="noopener" href="http://schemas.android.com/apk/res/android&quot;">http://schemas.android.com/apk/res/android&quot;</a></p>
+<pre><code>android:layout_width=&quot;match_parent&quot;
+
+android:layout_height=&quot;match_parent&quot;
+
+android:orientation=&quot;vertical&quot;&gt;
+
+&lt;include layout=&quot;@layout/tool_bar&quot;/&gt;
+
+
+
+
+&lt;LinearLayout
+
+    android:layout_width=&quot;match_parent&quot;
+
+    android:layout_height=&quot;match_parent&quot;
+
+    android:background=&quot;@color/white&quot;
+
+    android:orientation=&quot;vertical&quot;&gt;
+
+
+
+
+    &lt;FrameLayout
+
+        android:id=&quot;@+id/fragment_container&quot;
+
+        android:layout_width=&quot;match_parent&quot;
+
+        android:layout_height=&quot;0dp&quot;
+
+        android:layout_weight=&quot;1&quot;
+
+        android:background=&quot;@color/white&quot;&gt;
+
+
+
+
+    &lt;/FrameLayout&gt;
+
+
+
+
+    &lt;RadioGroup
+
+        android:id=&quot;@+id/radioGroup&quot;
+
+        android:layout_width=&quot;match_parent&quot;
+
+        android:layout_height=&quot;40dp&quot;
+
+        android:orientation=&quot;horizontal&quot;
+
+        android:background=&quot;@color/colorPrimary&quot;
+
+        &gt;
+
+
+
+
+        &lt;RadioButton
+
+            android:text=&quot;首页&quot;
+
+            android:layout_width=&quot;wrap_content&quot;
+
+            android:layout_height=&quot;match_parent&quot;
+
+            android:id=&quot;@+id/btn_homepage&quot;
+
+            android:layout_weight=&quot;1&quot;
+
+            android:button=&quot;@null&quot;
+
+            android:gravity=&quot;center&quot;
+
+            android:textColor=&quot;@color/selector_font_color&quot;
+
+            android:textSize=&quot;18sp&quot;
+
+            /&gt;
+
+
+
+
+        &lt;RadioButton
+
+            android:text=&quot;社区&quot;
+
+            android:layout_width=&quot;wrap_content&quot;
+
+            android:layout_height=&quot;match_parent&quot;
+
+            android:id=&quot;@+id/btn_message&quot;
+
+            android:layout_weight=&quot;1&quot;
+
+            android:button=&quot;@null&quot;
+
+            android:gravity=&quot;center&quot;
+
+            android:textColor=&quot;@color/selector_font_color&quot;
+
+            android:textSize=&quot;18sp&quot;
+
+            /&gt;
+
+
+
+
+        &lt;RadioButton
+
+            android:text=&quot;运动&quot;
+
+            android:layout_width=&quot;wrap_content&quot;
+
+            android:layout_height=&quot;match_parent&quot;
+
+            android:id=&quot;@+id/btn_service&quot;
+
+            android:layout_weight=&quot;1&quot;
+
+            android:button=&quot;@null&quot;
+
+            android:gravity=&quot;center&quot;
+
+            android:textColor=&quot;@color/selector_font_color&quot;
+
+            android:textSize=&quot;18sp&quot;
+
+            /&gt;
+
+
+
+
+        &lt;RadioButton
+
+            android:text=&quot;个人&quot;
+
+            android:layout_width=&quot;wrap_content&quot;
+
+            android:layout_height=&quot;match_parent&quot;
+
+            android:id=&quot;@+id/btn_my&quot;
+
+            android:layout_weight=&quot;1&quot;
+
+            android:button=&quot;@null&quot;
+
+            android:gravity=&quot;center&quot;
+
+            android:textColor=&quot;@color/selector_font_color&quot;
+
+            android:textSize=&quot;18sp&quot;
+
+            /&gt;
+
+    &lt;/RadioGroup&gt;
+
+
+
+
+&lt;/LinearLayout&gt;
+</code></pre>
+</LinearLayout>
+
+
+
+
+<p>##android java 类LanQiuActivity 代码如下：</p>
+<p>public class LanQiuActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener {</p>
+<pre><code>private RadioGroup radioGroup;
+
+private RadioButton btn_homepage, btn_message, btn_service, btn_my;
+
+
+
+
+public static final String fragment1Tag = &quot;fragment1&quot;;
+
+public static final String fragment2Tag = &quot;fragment2&quot;;
+
+public static final String fragment3Tag = &quot;fragment3&quot;;
+
+public static final String fragment4Tag = &quot;fragment4&quot;;
+
+private AMapLocationClient locationClient = null;
+
+private AMapLocationClientOption locationOption = null;
+
+private TextView tvshare;
+
+private TextView iv_back;
+
+String city;
+
+public static boolean aa = true;
+
+private Toolbar toolbar;
+
+
+
+
+/**
+
+ * 定位监听
+
+ */
+
+AMapLocationListener locationListener = new AMapLocationListener() &#123;
+
+    @Override
+
+    public void onLocationChanged(AMapLocation location) &#123;
+
+        if (null != location) &#123;
+
+
+
+
+            StringBuffer sb = new StringBuffer();
+
+            if (location.getErrorCode() == 0) &#123;
+
+                //解析定位结果，
+
+                city = location.getLatitude() + &quot;:&quot; + location.getLongitude();
+
+            &#125; else &#123;
+
+                sb.append(&quot;定位失败&quot; + &quot;\n&quot;);
+
+                sb.append(&quot;错误码:&quot; + location.getErrorCode() + &quot;\n&quot;);
+
+            &#125;
+
+            Log.e(&quot;解析定位结果&quot;, city);
+
+            iv_back.setText(location.getCity());
+
+        &#125; else &#123;
+
+            iv_back.setText(&quot;定位失败&quot;);
+
+        &#125;
+
+        if (aa) &#123;
+
+            XinzhiTianqiData();
+
+            aa = false;
+
+        &#125;
+
+    &#125;
+
+&#125;;
+
+
+
+
+
+
+
+/**
+
+ * 开始定位
+
+ *
+
+ * @author hongming.wang
+
+ * @since 2.8.0
+
+ */
+
+private void startLocation() &#123;
+
+    //根据控件的选择，重新设置定位参数
+</code></pre>
+<p>//        resetOption();</p>
+<pre><code>    // 设置定位参数
+
+    locationClient.setLocationOption(locationOption);
+
+    // 启动定位
+
+    locationClient.startLocation();
+
+&#125;
+
+
+
+
+/**
+
+ * 默认的定位参数
+
+ *
+
+ * @author hongming.wang
+
+ * @since 2.8.0
+
+ */
+
+private AMapLocationClientOption getDefaultOption() &#123;
+
+    AMapLocationClientOption mOption = new AMapLocationClientOption();
+
+    mOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);//可选，设置定位模式，可选的模式有高精度、仅设备、仅网络。默认为高精度模式
+
+    mOption.setGpsFirst(false);//可选，设置是否gps优先，只在高精度模式下有效。默认关闭
+
+    mOption.setHttpTimeOut(30000);//可选，设置网络请求超时时间。默认为30秒。在仅设备模式下无效
+
+    mOption.setInterval(2000);//可选，设置定位间隔。默认为2秒
+
+    mOption.setNeedAddress(true);//可选，设置是否返回逆地理地址信息。默认是true
+
+    mOption.setOnceLocation(false);//可选，设置是否单次定位。默认是false
+
+    mOption.setOnceLocationLatest(false);//可选，设置是否等待wifi刷新，默认为false.如果设置为true,会自动变为单次定位，持续定位时不要使用
+
+    AMapLocationClientOption.setLocationProtocol(AMapLocationClientOption.AMapLocationProtocol.HTTP);//可选， 设置网络请求的协议。可选HTTP或者HTTPS。默认为HTTP
+
+    mOption.setSensorEnable(false);//可选，设置是否使用传感器。默认是false
+
+    mOption.setWifiScan(true); //可选，设置是否开启wifi扫描。默认为true，如果设置为false会同时停止主动刷新，停止以后完全依赖于系统刷新，定位位置可能存在误差
+
+    mOption.setLocationCacheEnable(true); //可选，设置是否使用缓存定位，默认为true
+
+    return mOption;
+
+&#125;
+
+
+
+
+/**
+
+ * 初始化定位
+
+ *
+
+ * @author hongming.wang
+
+ * @since 2.8.0
+
+ */
+
+private void initLocation() &#123;
+
+    //初始化client
+
+    locationClient = new AMapLocationClient(getApplicationContext());
+
+    locationOption = getDefaultOption();
+
+    //设置定位参数
+
+    locationClient.setLocationOption(locationOption);
+
+    // 设置定位监听
+
+    locationClient.setLocationListener(locationListener);
+</code></pre>
+<p>//        XinzhiTianqiData();</p>
+<pre><code>&#125;
+
+
+
+
+private void XinzhiTianqiData() &#123;
+
+    RequestParams params = new RequestParams();
+
+    params.put(&quot;location&quot;, city);
+
+    Log.e(&quot;天气XinzhiTianqiData&quot;, &quot;天气XinzhiTianqiData&quot;);
+
+    AsyncHttpClientUtil.getInstance().get(Constants.XinzhiTianqi, params, new AsyncHttpResponseHandler() &#123;
+
+        @Override
+
+        public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) &#123;
+
+            String s = new String(responseBody);
+</code></pre>
+<p>//                Log.e(“天气”, “”+s);</p>
+<pre><code>            XinzhiModle xinzhiModle = GsonUtils.parseJSON(s, XinzhiModle.class);
+
+            List&lt;XinzhiModle.ResultsBean&gt; results = xinzhiModle.getResults();
+
+            String text = results.get(0).getNow().getText();
+
+            tvshare.setText(&quot;天气: &quot; + text);
+
+        &#125;
+
+
+
+
+        @Override
+
+        public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) &#123;
+
+        &#125;
+
+    &#125;);
+
+&#125;
+
+
+
+
+@Override
+
+protected void onCreate(Bundle savedInstanceState) &#123;
+
+    super.onCreate(savedInstanceState);
+
+    if (savedInstanceState == null) &#123;
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        Fragment fragment = new HomeFragment();
+
+        fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment, fragment1Tag).commit();
+
+    &#125;
+
+    setContentView(R.layout.activity_lan_qiu);
+
+    toolbar = (Toolbar) findViewById(R.id.tool_bar);
+
+    TextView tool_bar_title = (TextView)findViewById(R.id.tool_bar_title);
+
+    tool_bar_title.setVisibility(View.GONE);
+
+    tvshare = (TextView)findViewById(R.id.tv_share1);
+
+    iv_back = (TextView)findViewById(R.id.iv_back1);
+
+    iv_back.setVisibility(View.VISIBLE);
+
+    tvshare.setVisibility(View.VISIBLE);
+
+    iv_back.setTextSize(22);
+
+    tvshare.setTextSize(22);
+
+    radioGroup = (RadioGroup) this.findViewById(R.id.radioGroup);
+
+    btn_homepage = (RadioButton) this.findViewById(R.id.btn_homepage);
+
+    btn_homepage.setSelected(true);
+
+    btn_message = (RadioButton) this.findViewById(R.id.btn_message);
+
+    btn_service = (RadioButton) this.findViewById(R.id.btn_service);
+
+    btn_my = (RadioButton) this.findViewById(R.id.btn_my);
+
+    initLocation();
+
+    startLocation();
+
+    radioGroup.setOnCheckedChangeListener(this);
+
+&#125;
+
+
+
+
+
+
+
+public static void start(Context context, SzBean szBean) &#123;
+
+    Intent starter = new Intent(context, MainActivity.class);
+
+    starter.putExtra(ParamsKey.EXTRA_SZBEAN, szBean);
+
+    context.startActivity(starter);
+
+&#125;
+</code></pre>
+<p>//选中首页界面RadioButton处理事件</p>
+<pre><code>private void HomePageSelect() &#123;
+
+    btn_homepage.setSelected(true);
+
+    btn_message.setSelected(false);
+
+    btn_service.setSelected(false);
+
+    btn_my.setSelected(false);
+
+&#125;
+</code></pre>
+<p>//选中信息界面RadioButton处理事件</p>
+<pre><code>private void MessageSelect() &#123;
+
+    btn_homepage.setSelected(false);
+
+    btn_message.setSelected(true);
+
+    btn_service.setSelected(false);
+
+    btn_my.setSelected(false);
+
+&#125;
+</code></pre>
+<p>##//选中记录RadioButton处理事件</p>
+<pre><code>private void RecordSelect() &#123;
+
+    btn_homepage.setSelected(false);
+
+    btn_message.setSelected(false);
+
+    btn_service.setSelected(true);
+
+    btn_my.setSelected(false);
+
+&#125;
+</code></pre>
+<p>##//选中我的界面RadioButton处理事件</p>
+<pre><code>private void MySelect() &#123;
+
+    btn_homepage.setSelected(false);
+
+    btn_message.setSelected(false);
+
+    btn_service.setSelected(false);
+
+    btn_my.setSelected(true);
+
+&#125;
+</code></pre>
+<p>##//在RadioGroup中切换改变选中RadioButton事件，处理跳转到相应界面</p>
+<pre><code>@Override
+
+public void onCheckedChanged(RadioGroup radioGroup, int i) &#123;
+
+    FragmentManager fm = getSupportFragmentManager();
+
+    FragmentTransaction ft = fm.beginTransaction();
+
+    Fragment fragment1 = fm.findFragmentByTag(fragment1Tag);
+
+    Fragment fragment2 = fm.findFragmentByTag(fragment2Tag);
+
+    Fragment fragment3 = fm.findFragmentByTag(fragment3Tag);
+
+    Fragment fragment4 = fm.findFragmentByTag(fragment4Tag);
+
+    if (fragment1 != null) &#123;
+
+        ft.hide(fragment1);
+
+    &#125;
+
+    if (fragment2 != null) &#123;
+
+        ft.hide(fragment2);
+
+    &#125;
+
+    if (fragment3 != null) &#123;
+
+        ft.hide(fragment3);
+
+    &#125;
+
+    if (fragment4 != null) &#123;
+
+        ft.hide(fragment4);
+
+    &#125;
+
+    switch (i) &#123;
+
+        case R.id.btn_homepage:
+
+            toolbar.setVisibility(View.VISIBLE);
+
+            if (fragment1 == null) &#123;
+
+                fragment1 = new HomeFragment();
+
+                ft.add(R.id.fragment_container, fragment1, fragment1Tag);
+
+            &#125; else &#123;
+
+                ft.show(fragment1);
+
+            &#125;
+
+            HomePageSelect();
+
+            break;
+
+        case R.id.btn_message:
+
+            toolbar.setVisibility(View.VISIBLE);
+
+            if (fragment2 == null) &#123;
+
+                fragment2 = new BBsFragment();
+
+                ft.add(R.id.fragment_container, fragment2, fragment2Tag);
+
+            &#125; else &#123;
+
+                ft.show(fragment2);
+
+            &#125;
+
+            MessageSelect();
+
+            break;
+
+        case R.id.btn_service:
+
+            toolbar.setVisibility(View.VISIBLE);
+
+            if (fragment3 == null) &#123;
+
+                fragment3 = new SportFragment();
+
+                ft.add(R.id.fragment_container, fragment3, fragment3Tag);
+
+            &#125; else &#123;
+
+                ft.show(fragment3);
+
+            &#125;
+
+            RecordSelect();
+
+            break;
+
+        case R.id.btn_my:
+
+            toolbar.setVisibility(View.GONE);
+
+            if (fragment4 == null) &#123;
+
+                fragment4 = new PersonalCenteFragment();
+
+                ft.add(R.id.fragment_container, fragment4, fragment4Tag);
+
+            &#125; else &#123;
+
+                ft.show(fragment4);
+
+            &#125;
+
+            MySelect();
+
+            break;
+
+    &#125;
+
+    ft.commit();
+
+&#125;
+
+
+
+
+##//app退到后台，我们去玩其他的app，过一段时间回来，这个时候我们的app已经被销毁，我们按多任务键切换回来，发现界面上多个Fragment出现了重叠的情况，这是因为多个Fragment同时显示了，出现了重叠的情况，解决的办法如下：重写Activity的onRestoreInstanceState方法
+
+@Override
+
+protected void onRestoreInstanceState(Bundle savedInstanceState) &#123;
+
+    super.onRestoreInstanceState(savedInstanceState);
+
+    for (int i = 0; i &lt; radioGroup.getChildCount(); i++) &#123;
+
+        RadioButton mTab = (RadioButton) radioGroup.getChildAt(i);
+
+        FragmentManager fm = getSupportFragmentManager();
+
+        Fragment fragment = fm.findFragmentByTag((String) mTab.getTag());
+
+        FragmentTransaction ft = fm.beginTransaction();
+
+        if (fragment != null) &#123;
+
+            if (!mTab.isChecked()) &#123;
+
+                ft.hide(fragment);
+
+            &#125;
+
+        &#125;
+
+        ft.commit();
+
+    &#125;
+
+&#125;
+
+
+
+
+private long mExitTime;
+
+
+
+
+
+
+
+##//按back提示再按一次退出
+
+
+
+
+public boolean onKeyDown(int keyCode, KeyEvent event) &#123;
+
+    if (keyCode == KeyEvent.KEYCODE_BACK) &#123;
+
+        if ((System.currentTimeMillis() - mExitTime) &gt; 2000) &#123;
+
+            Toast.makeText(getApplicationContext(), &quot;再按一次退出&quot;, Toast.LENGTH_SHORT).show();
+
+            mExitTime = System.currentTimeMillis();
+
+        &#125; else &#123;
+
+            finish();
+
+            System.exit(0);
+
+        &#125;
+
+        return true;
+
+    &#125;
+
+    return super.onKeyDown(keyCode, event);
+
+&#125;
+</code></pre>
+<p>}</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">清风明月</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2020/06/20/categories/Android/%E5%88%A4%E6%96%AD%E9%9A%90%E5%BC%8Fintent%E8%B7%B3%E8%BD%AC%E6%98%AF%E5%90%A6%E6%9C%89%E5%88%A4%E6%96%AD%E6%9C%89%E5%8C%B9%E9%85%8D%E7%9A%84activity/" class="pre-post btn btn-default" title='判断隐式intent跳转是否有判断有匹配的activity'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            判断隐式intent跳转是否有判断有匹配的activity</span>
+    </a>
+    
+    
+    <a href="/2020/05/20/categories/Android/%E6%9B%B4%E6%96%B0ui%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" class="next-post btn btn-default" title='APP适配安卓手机刘海屏'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            APP适配安卓手机刘海屏</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    
+<div class="utteranc">
+  
+  <script
+    src='https://utteranc.es/client.js'
+    repo='yansil/snippet-comment'
+    issue-term='pathname'
+    issue-number=''
+    theme='github-light'
+    label=''
+    crossorigin='anonymous'
+    async
+  ></script>
+</div>
+
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <p>暂无目录</p>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2021
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//yansil.github.io" class="copyright-links" target="_blank" rel="nofollow">清风明月</a>
+                </span> |
+                <span>
+                    Theme by <a href="//yansil.github.io" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>
