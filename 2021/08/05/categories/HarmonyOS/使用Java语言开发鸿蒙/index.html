@@ -1,0 +1,418 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="清风明月博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.3.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://yansil.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="Android" />
+
+
+<meta name="description" content="使用Java语言开发更新时间: 2021-08-27 16:31编写第一个页面在Java UI框架中，提供了两种编写布局的方式：在XML中声明UI布局和在代码中创建布局。这两种方式创建出的布局没..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    使用Java语言开发鸿蒙 |
+    
+    清风明月博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="清风明月博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /./img/beiixin.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='清风明月'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://yansil.github.io">
+                        清风明月博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Android/"><i class="fa "></i>
+                                Android</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Python/"><i class="fa "></i>
+                                Python</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/小程序/"><i class="fa "></i>
+                                小程序</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/HarmonyOS/"><i class="fa "></i>
+                                HarmonyOS</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="使用Java语言开发鸿蒙">
+            
+            使用Java语言开发鸿蒙
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/HarmonyOS/">HarmonyOS</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2021/08/05</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>使用Java语言开发<br>更新时间: 2021-08-27 16:31<br>编写第一个页面<br>在Java UI框架中，提供了两种编写布局的方式：在XML中声明UI布局和在代码中创建布局。这两种方式创建出的布局没有本质差别，为了熟悉两种方式，我们将通过XML的方式编写第一个页面，通过代码的方式编写第二个页面。</p>
+<p>在Project窗口，点击“entry &gt; src &gt; main &gt; resources &gt; base &gt; layout”，打开“ability_main.xml”文件。</p>
+<p>（可选）在Project窗口，点击“entry &gt; src &gt; main &gt; resources &gt; base &gt; element”，打开“string.json”文件，可在此文件内声明所需引用的资源内容。关于取值为string类型的文本属性，可以直接设置文本字串，也可以引用string资源（推荐使用）。string.json的示例代码如下：<br>{<br>    “string”:[<br>        {<br>            “name”:”entry_MainAbility”,<br>            “value”:”entry_MainAbility”<br>        },<br>        {<br>             “name”:”mainability_description”,<br>             “value”:”Java_Empty Ability”<br>        },<br>        {<br>             “name”:”mainability_HelloWorld”,<br>             “value”:”Hello World”<br>        },<br>        {<br>             “name”:”button_Next”,<br>             “value”:”Next”<br>         }<br>     ]<br>}<br>第一个页面内有一个文本和一个按钮，使用DependentLayout布局，通过Text和Button组件来实现，其中vp和fp分别表示虚拟像素和字体像素。本次示例展示两个组件的显示文本分别采用直接设置文本字串、引用string资源（推荐使用）的方式。“ability_main.xml”的示例代码如下：<br><?xml version="1.0" encoding="utf-8"?><br><DependentLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:width="match_parent"
+    ohos:height="match_parent"><br>    <Text
+        ohos:id="$+id:text"
+        ohos:width="match_content"
+        ohos:height="match_content"
+        ohos:text="Hello World"
+        ohos:text_color="#000000"
+        ohos:text_size="32fp"
+        ohos:center_in_parent="true"/><br>    <Button
+        ohos:id="$+id:button"
+        ohos:width="match_content"
+        ohos:height="match_content"
+        ohos:text="$string:button_Next"
+        ohos:text_size="19fp"
+        ohos:text_color="#FFFFFF"
+        ohos:top_padding="8vp"
+        ohos:bottom_padding="8vp"
+        ohos:right_padding="70vp"
+        ohos:left_padding="70vp"
+        ohos:center_in_parent="true"
+        ohos:below="$id:text"
+        ohos:margin="10vp"/><br></DependentLayout><br>按钮的背景是蓝色胶囊样式，可以通过graphic目录下的XML文件来设置。<br>右键点击“graphic”文件夹，选择“New &gt; File”，命名为“background_button.xml”，单击回车键。</p>
+<p>“background_button.xml”的示例代码如下：<br><?xml version="1.0" encoding="utf-8"?><br><shape
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:shape="rectangle"><br>    <corners
+        ohos:radius="100"/><br>    <solid
+        ohos:color="#007DFF"/><br></shape><br>在layout目录下的“ability_main.xml”文件中，使用background_element=”$graphic:background_button”的方式引用“background_button.xml”文件：</p>
+<?xml version="1.0" encoding="utf-8"?>
+<p>&lt;DependentLayout<br>    …<br>    <Button
+        ohos:id="$+id:button"
+        ohos:width="match_content"
+        ohos:height="match_content"
+        ohos:text="Next"
+        ohos:text_size="19fp"
+        ohos:text_color="#FFFFFF"
+        ohos:top_padding="8vp"
+        ohos:bottom_padding="8vp"
+        ohos:right_padding="70vp"
+        ohos:left_padding="70vp"
+        ohos:center_in_parent="true"
+        ohos:below="$id:text"
+        ohos:margin="10vp"
+        ohos:background_element="$graphic:background_button"/><br></DependentLayout><br>在XML文件中添加组件后，需要在Java代码中加载XML布局。<br>在Project窗口，选择“entry &gt; src &gt; main &gt; java &gt; com.example.myapplication &gt; slice” ，打开“MainAbilitySlice.java”文件，使用setUIContent方法加载“ability_main.xml”布局。此外，运行代码前需采用import（可使用Alt+Enter快捷键）引入对应类，否则会产生报错提示。<br>说明<br>HarmonyOS提供了Ability和AbilitySlice两个基础类，一个有界面的Ability可以由一个或多个AbilitySlice构成，AbilitySlice主要用于承载单个页面的具体逻辑实现和界面UI，是应用显示、运行和跳转的最小单元。</p>
+<p>本文档以同一个Ability内的两个AbilitySlice之间的跳转为例，如果开发者希望实现两个Ability之间的跳转，请参考不同Page间导航。</p>
+<p>“MainAbilitySlice.java”的示例代码如下：<br>//请根据实际工程/包名引入<br>package com.example.myapplication.slice;</p>
+<p>import com.example.myapplication.ResourceTable;</p>
+<p>import ohos.aafwk.ability.AbilitySlice;<br>import ohos.aafwk.content.Intent;</p>
+<p>public class MainAbilitySlice extends AbilitySlice {<br>    @Override<br>    public void onStart(Intent intent) {<br>        super.onStart(intent);<br>        super.setUIContent(ResourceTable.Layout_ability_main); // 加载layout目录下的XML布局<br>    }<br>}<br>使用预览器或模拟器运行项目，效果如下图所示：</p>
+<p>创建另一个页面<br>在上一节中，我们用XML的方式编写了一个包含文本和按钮的页面。为了帮助开发者熟悉在代码中创建布局的方式，接下来我们使用代码的方式编写第二个页面。</p>
+<p>在Project窗口，打开“entry &gt; src &gt; main &gt; java &gt; com.example.myapplication”，右键点击“slice”文件夹，选择“New &gt; Java Class”，命名为“SecondAbilitySlice”，单击回车键。<br>第二个页面上有一个文本。打开“SecondAbilitySlice”文件，添加一个Text，示例代码如下：<br>//请根据实际工程/包名引入<br>package com.example.myapplication.slice;</p>
+<p>import ohos.aafwk.ability.AbilitySlice;<br>import ohos.aafwk.content.Intent;<br>import ohos.agp.colors.RgbColor;<br>import ohos.agp.components.DependentLayout;<br>import ohos.agp.components.Text;<br>import ohos.agp.components.element.ShapeElement;<br>import ohos.agp.utils.Color;<br>import ohos.agp.components.DependentLayout.LayoutConfig;</p>
+<p>public class SecondAbilitySlice extends AbilitySlice {<br>    @Override<br>    public void onStart(Intent intent) {<br>        super.onStart(intent);</p>
+<pre><code>    // 声明布局
+    DependentLayout myLayout = new DependentLayout(this);
+
+    // 设置布局宽高
+    myLayout.setWidth(LayoutConfig.MATCH_PARENT);
+    myLayout.setHeight(LayoutConfig.MATCH_PARENT);
+
+    // 设置布局背景为白色
+    ShapeElement background = new ShapeElement();
+    background.setRgbColor(new RgbColor(255, 255, 255));
+    myLayout.setBackground(background);
+
+    // 创建一个文本
+    Text text = new Text(this);
+    text.setText(&quot;Hi there&quot;);
+    text.setWidth(LayoutConfig.MATCH_PARENT);
+    text.setTextSize(100);
+    text.setTextColor(Color.BLACK);
+
+    // 设置文本的布局
+    DependentLayout.LayoutConfig textConfig = new DependentLayout.LayoutConfig(LayoutConfig.MATCH_CONTENT, LayoutConfig.MATCH_CONTENT);
+    textConfig.addRule(LayoutConfig.CENTER_IN_PARENT);
+    text.setLayoutConfig(textConfig);
+    myLayout.addComponent(text);
+    super.setUIContent(myLayout);
+&#125;
+</code></pre>
+<p>}<br>实现页面跳转<br>打开第一个页面的“MainAbilitySlice.java”文件，添加按钮的响应逻辑，实现点击按钮跳转到下一页，示例代码如下：<br>//请根据实际工程/包名引入<br>package com.example.myapplication.slice;</p>
+<p>import com.example.myapplication.ResourceTable;</p>
+<p>import ohos.aafwk.ability.AbilitySlice;<br>import ohos.aafwk.content.Intent;<br>import ohos.agp.components.Button;</p>
+<p>public class MainAbilitySlice extends AbilitySlice {<br>    @Override<br>    public void onStart(Intent intent) {<br>        super.onStart(intent);<br>        super.setUIContent(ResourceTable.Layout_ability_main);<br>        Button button = (Button) findComponentById(ResourceTable.Id_button);</p>
+<pre><code>    // 点击按钮跳转至第二个页面
+    button.setClickedListener(listener -&gt; present(new SecondAbilitySlice(), new Intent()));
+&#125;
+</code></pre>
+<p>}<br>说明<br>setClickedListener用于注册监听相关组件的点击事件，present用于实现页面间的导航。关于页面跳转的更多详细用法，可参考AbilitySlice间导航。</p>
+<p>再次使用预览器或模拟器运行项目，效果如下图所示：<br>点击放大</p>
+<p>恭喜你，至此已成功完成HarmonyOS快速入门-使用JAVA语言开发。</p>
+
+    </div>
+    <div align="center">
+     <p style="text-align:center; color:orange; font-size:26px">安卓学习教程公众号</p>
+       <img src="/./img/ercode.jpg" width="258" height="258">
+     </div>
+    
+    <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+            <span class="reward-type">
+                <img class="wechat" src="/./img/reward-wepay.jpg"><b>微信打赏</b>
+            </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">
+        祝你事业顺心，富贵吉祥，赞赏鼓励
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">清风明月</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2021/08/06/categories/HarmonyOS/%E9%85%8D%E7%BD%AE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="pre-post btn btn-default" title='鸿蒙配置开发环境'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            鸿蒙配置开发环境</span>
+    </a>
+    
+    
+    <a href="/2021/08/01/categories/HarmonyOS/HarmonyOS%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85/" class="next-post btn btn-default" title='HarmonyOS开发工具下载安装'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            HarmonyOS开发工具下载安装</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    
+<div class="utteranc">
+  
+  <script
+    src='https://utteranc.es/client.js'
+    repo='yansil/snippet-comment'
+    issue-term='pathname'
+    issue-number=''
+    theme='github-light'
+    label=''
+    crossorigin='anonymous'
+    async
+  ></script>
+</div>
+
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <p>暂无目录</p>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2021
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//yansil.github.io" class="copyright-links" target="_blank" rel="nofollow">清风明月</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>
