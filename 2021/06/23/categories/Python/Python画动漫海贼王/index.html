@@ -1,0 +1,338 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="清风明月博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.3.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://yansil.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="Android" />
+
+
+<meta name="description" content="代码实现如下：import turtle as t
+“”” t.hideturtle()t.bgcolor(‘white’) “””
+t.setup(800,500) # 创建画布并使其位于屏幕..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    Python画动漫海贼王 |
+    
+    清风明月博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="清风明月博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /./img/beiixin.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='清风明月'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://yansil.github.io">
+                        清风明月博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Android/"><i class="fa "></i>
+                                Android</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Python/"><i class="fa "></i>
+                                Python</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/小程序/"><i class="fa "></i>
+                                小程序</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/HarmonyOS/"><i class="fa "></i>
+                                HarmonyOS</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Python画动漫海贼王">
+            
+            Python画动漫海贼王
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/Python/">Python</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2021/06/23</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h3 id="代码实现如下："><a href="#代码实现如下：" class="headerlink" title="代码实现如下："></a>代码实现如下：</h3><p>import turtle as t</p>
+<p>“”” t.hideturtle()<br>t.bgcolor(‘white’) “””</p>
+<p>t.setup(800,500) # 创建画布并使其位于屏幕中心<br>t.pensize(2)  #  画笔粗细<br>t.colormode(255)  # 色彩模式<br>t.speed(10)  # 绘画速度<br>t.color(‘black’,(255,228,181))  # 画笔颜色与填充色<br>t.shape(‘turtle’)  # 画笔的形状<br>t.speed(10)  #画笔速度<br>t.showturtle() # 使画笔显现</p>
+<h1 id="移动画笔"><a href="#移动画笔" class="headerlink" title="移动画笔"></a>移动画笔</h1><p>def move(x, y, angle):<br>    t.pu()<br>    t.goto(x, y)<br>    t.seth(angle)<br>    t.pd()</p>
+<h1 id="画圆填充颜色"><a href="#画圆填充颜色" class="headerlink" title="画圆填充颜色"></a>画圆填充颜色</h1><p>def draw_circle(x, y, r, color):<br>    t.color(color)<br>    t.pu()<br>    t.goto(x, y)<br>    t.seth(-90)<br>    t.fd(r)<br>    t.seth(0)<br>    t.pd<br>    t.begin_fill()<br>    t.circle(r)<br>    t.end_fill()<br>    pass</p>
+<h1 id="画圆不填充颜色"><a href="#画圆不填充颜色" class="headerlink" title="画圆不填充颜色"></a>画圆不填充颜色</h1><p>def draw_circle_normal(x, y, r):<br>    t.pu()<br>    t.goto(x, y)<br>    t.seth(-90)<br>    t.fd(r)<br>    t.seth(0)<br>    t.pd()<br>    t.circle(r)<br>    pass</p>
+<h1 id="画脸"><a href="#画脸" class="headerlink" title="画脸"></a>画脸</h1><p>def draw_face():<br>    t.color(‘black’, ‘white’)<br>    move(0, -103, 0)<br>    t.begin_fill()<br>    t.circle(103, 90)<br>    t.seth(180)<br>    t.fd(103*2)<br>    t.seth(-90)<br>    t.circle(103, 90)<br>    t.end_fill()<br>    pass</p>
+<h1 id="画眼睛、鼻子"><a href="#画眼睛、鼻子" class="headerlink" title="画眼睛、鼻子"></a>画眼睛、鼻子</h1><p>def draw_eyes():<br>    t.color(‘black’)<br>    move(-40, 0, 180)<br>    t.begin_fill()<br>    t.circle(30)<br>    t.end_fill()<br>    move(40, 0, 180)<br>    t.begin_fill()<br>    t.circle(30)<br>    t.end_fill()<br>    move(0, -61, 180)<br>    t.begin_fill()<br>    t.circle(13)<br>    t.end_fill()</p>
+<h1 id="画帽子"><a href="#画帽子" class="headerlink" title="画帽子"></a>画帽子</h1><p>def draw_hat():<br>    t.color(‘black’, ‘#fcd462’)<br>    move(0, 0, 0)<br>    t.begin_fill()<br>    t.fd(175)<br>    t.circle(15, 180)<br>    t.fd(175*2)<br>    t.circle(15, 180)<br>    t.fd(175)<br>    t.end_fill()<br>    pass<br>    move(0, 0, 17)<br>    t.color(‘#fcd462’)<br>    t.pu()<br>    t.fd(103)<br>    p1 = t.position()<br>    t.left(90)<br>    t.pd()<br>    t.begin_fill()<br>    t.circle(103, 147)<br>    t.seth(0)<br>    p2 = t.position()<br>    t.goto(p1)<br>    t.end_fill()<br>    pass<br>    t.color(‘#fe0202’)<br>    t.seth(107)<br>    t.begin_fill()<br>    t.circle(103, 15)<br>    p3 = t.position()<br>    t.pu()<br>    t.right(180)<br>    t.circle(-103, 15)<br>    t.seth(180)<br>    t.pd()<br>    t.goto(p2)<br>    t.seth(77)<br>    t.circle(-103, 15)<br>    t.goto(p3)<br>    t.end_fill()<br>    pass</p>
+<h1 id="画嘴巴"><a href="#画嘴巴" class="headerlink" title="画嘴巴"></a>画嘴巴</h1><p>def draw_mouth():<br>    move(0, -90, 180)<br>    t.color(‘black’, ‘white’)<br>    t.begin_fill()<br>    t.circle(50)<br>    t.end_fill()<br>    pass<br>    draw_circle_normal(0, 0, 160)<br>    draw_circle_normal(0, 0, 130)<br>    move(0,-103,-90)<br>    t.fd(57)<br>    p4=t.position()<br>    t.seth(0)<br>    t.pu()<br>    t.circle(160,10)<br>    t.seth(100)<br>    t.pd()<br>    t.fd(57)<br>    t.pu()<br>    t.goto(p4)<br>    t.seth(180)<br>    t.pd()<br>    t.circle(-160,10)<br>    t.seth(80)<br>    t.fd(57)<br>    pass</p>
+<h1 id="画骨头十字架"><a href="#画骨头十字架" class="headerlink" title="画骨头十字架"></a>画骨头十字架</h1><p>def draw_bone():<br>    t.color(‘black’,’white’)<br>    move(-132,155,-42)<br>    t.fd(404)<br>    t.left(90)<br>    t.circle(-20,270)<br>    t.right(180)<br>    t.circle(-20,270)<br>    t.seth(138)<br>    t.fd(404)<br>    t.left(90)<br>    t.circle(-20,270)<br>    t.left(180)<br>    t.circle(-20,270)<br>    pass<br>    move(-132,-155,48)<br>    t.fd(404)<br>    t.right(90)<br>    t.circle(20,270)<br>    t.right(180)<br>    t.circle(20,270)<br>    t.seth(228)<br>    t.fd(404)<br>    t.right(90)<br>    t.circle(20,270)<br>    t.left(180)<br>    t.circle(20,270)<br>    pass</p>
+<p>t.pensize(5)<br>draw_bone()<br>t.pensize(2)<br>draw_circle(0,0,160,’black’)<br>draw_mouth()<br>draw_face()<br>draw_eyes()<br>draw_hat()<br>t.done()</p>
+
+    </div>
+    <div align="center">
+     <p style="text-align:center; color:orange; font-size:26px">安卓学习教程公众号</p>
+       <img src="/./img/ercode.jpg" width="258" height="258">
+     </div>
+    
+    <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+            <span class="reward-type">
+                <img class="wechat" src="/./img/reward-wepay.jpg"><b>微信打赏</b>
+            </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">
+        祝你事业顺心，富贵吉祥，赞赏鼓励
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">清风明月</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2021/06/24/categories/Python/Python%E5%A4%8D%E5%88%B6%E6%96%87%E4%BB%B6/" class="pre-post btn btn-default" title='Python例子-复制文件'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            Python例子-复制文件</span>
+    </a>
+    
+    
+    <a href="/2021/06/23/categories/Python/Python%E4%B9%9D%E4%B9%9D%E4%B9%98%E6%B3%95%E8%A1%A8/" class="next-post btn btn-default" title='Python例子-九九乘法表'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            Python例子-九九乘法表</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    
+<div class="utteranc">
+  
+  <script
+    src='https://utteranc.es/client.js'
+    repo='yansil/snippet-comment'
+    issue-term='pathname'
+    issue-number=''
+    theme='github-light'
+    label=''
+    crossorigin='anonymous'
+    async
+  ></script>
+</div>
+
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="toc-text">代码实现如下：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E7%94%BB%E7%AC%94"><span class="toc-text">移动画笔</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%BB%E5%9C%86%E5%A1%AB%E5%85%85%E9%A2%9C%E8%89%B2"><span class="toc-text">画圆填充颜色</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%BB%E5%9C%86%E4%B8%8D%E5%A1%AB%E5%85%85%E9%A2%9C%E8%89%B2"><span class="toc-text">画圆不填充颜色</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%BB%E8%84%B8"><span class="toc-text">画脸</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%BB%E7%9C%BC%E7%9D%9B%E3%80%81%E9%BC%BB%E5%AD%90"><span class="toc-text">画眼睛、鼻子</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%BB%E5%B8%BD%E5%AD%90"><span class="toc-text">画帽子</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%BB%E5%98%B4%E5%B7%B4"><span class="toc-text">画嘴巴</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%BB%E9%AA%A8%E5%A4%B4%E5%8D%81%E5%AD%97%E6%9E%B6"><span class="toc-text">画骨头十字架</span></a>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2021
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//yansil.github.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>

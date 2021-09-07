@@ -1,0 +1,346 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="清风明月博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.3.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://yansil.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="Android" />
+
+
+<meta name="description" content="小猪佩奇代码实现如下：import turtle as t
+t.begin_fill()t.pensize(4)t.hideturtle()t.colormode(255)t.color((25..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    Python画小猪佩奇 |
+    
+    清风明月博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="清风明月博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /./img/beiixin.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='清风明月'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://yansil.github.io">
+                        清风明月博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Android/"><i class="fa "></i>
+                                Android</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Python/"><i class="fa "></i>
+                                Python</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/小程序/"><i class="fa "></i>
+                                小程序</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/HarmonyOS/"><i class="fa "></i>
+                                HarmonyOS</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Python画小猪佩奇">
+            
+            Python画小猪佩奇
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/Python/">Python</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2021/06/26</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h3 id="小猪佩奇代码实现如下："><a href="#小猪佩奇代码实现如下：" class="headerlink" title="小猪佩奇代码实现如下："></a>小猪佩奇代码实现如下：</h3><p>import turtle as t</p>
+<p>t.begin_fill()<br>t.pensize(4)<br>t.hideturtle()<br>t.colormode(255)<br>t.color((255, 155, 192), “pink”)<br>t.setup(840, 500)<br>t.speed(10)</p>
+<h1 id="写字"><a href="#写字" class="headerlink" title="写字"></a>写字</h1><p>#设置字体颜色<br>t.pencolor(“PINK”)<br>#起笔<br>t.penup()<br>#设定坐标<br>t.goto(-10,190)<br>#设置写字内容和字体、字号<br>t.write(“2021/06/16”, move=False, align=’center’, font=(“微软雅黑”, 26, ‘normal’))</p>
+<h1 id="鼻子"><a href="#鼻子" class="headerlink" title="鼻子"></a>鼻子</h1><p>t.pu()<br>t.goto(-100, 100)<br>t.pd()<br>t.seth(-30)<br>#填充颜色<br>t.begin_fill()<br>a = 0.4<br>for i in range(120):<br>    if 0 &lt;= i &lt; 30 or 60 &lt;= i &lt; 90:<br>        a = a + 0.08<br>        t.lt(3)  # 向左转3度<br>        t.fd(a)  # 向前走a的步长<br>    else:<br>        a = a - 0.08<br>        t.lt(3)<br>        t.fd(a)<br>#结束填充<br>t.end_fill()</p>
+<p>t.pu()<br>t.seth(90)<br>t.fd(25)<br>t.seth(0)<br>t.fd(10)<br>t.pd()<br>t.pencolor(255, 155, 192)<br>t.seth(10)<br>t.begin_fill()<br>t.circle(5)<br>t.color(160, 82, 45)<br>t.end_fill()</p>
+<p>t.pu()<br>t.seth(0)<br>t.fd(20)<br>t.pd()<br>t.pencolor(255, 155, 192)<br>t.seth(10)<br>t.begin_fill()<br>t.circle(5)<br>t.color(160, 82, 45)<br>t.end_fill()</p>
+<h1 id="头"><a href="#头" class="headerlink" title="头"></a>头</h1><p>t.color((255, 155, 192), “pink”)<br>t.pu()<br>t.seth(90)<br>t.fd(41)<br>t.seth(0)<br>t.fd(0)<br>t.pd()<br>t.begin_fill()<br>t.seth(180)<br>t.circle(300, -30)<br>t.circle(100, -60)<br>t.circle(80, -100)<br>t.circle(150, -20)<br>t.circle(60, -95)<br>t.seth(161)<br>t.circle(-300, 15)<br>t.pu()<br>t.goto(-100, 100)<br>t.pd()<br>t.seth(-30)<br>a = 0.4<br>for i in range(60):<br>    if 0 &lt;= i &lt; 30 or 60 &lt;= i &lt; 90:<br>        a = a + 0.08<br>        t.lt(3)  # 向左转3度<br>        t.fd(a)  # 向前走a的步长<br>    else:<br>        a = a - 0.08<br>        t.lt(3)<br>        t.fd(a)<br>t.end_fill()</p>
+<h1 id="耳朵"><a href="#耳朵" class="headerlink" title="耳朵"></a>耳朵</h1><p>t.color((255, 155, 192), “pink”)<br>t.pu()<br>t.seth(90)<br>t.fd(-7)<br>t.seth(0)<br>t.fd(70)<br>t.pd()<br>t.begin_fill()<br>t.seth(100)<br>t.circle(-50, 50)<br>t.circle(-10, 120)<br>t.circle(-50, 54)<br>t.end_fill()</p>
+<p>t.pu()<br>t.seth(90)<br>t.fd(-12)<br>t.seth(0)<br>t.fd(30)<br>t.pd()<br>t.begin_fill()<br>t.seth(100)<br>t.circle(-50, 50)<br>t.circle(-10, 120)<br>t.circle(-50, 56)<br>t.end_fill()</p>
+<h1 id="眼睛"><a href="#眼睛" class="headerlink" title="眼睛"></a>眼睛</h1><p>t.color((255, 155, 192), “white”)<br>t.pu()<br>t.seth(90)<br>t.fd(-20)<br>t.seth(0)<br>t.fd(-95)<br>t.pd()<br>t.begin_fill()<br>t.circle(15)<br>t.end_fill()</p>
+<p>t.color(“black”)<br>t.pu()<br>t.seth(90)<br>t.fd(12)<br>t.seth(0)<br>t.fd(-3)<br>t.pd()<br>t.begin_fill()<br>t.circle(3)<br>t.end_fill()</p>
+<p>t.color((255, 155, 192), “white”)<br>t.pu()<br>t.seth(90)<br>t.fd(-25)<br>t.seth(0)<br>t.fd(40)<br>t.pd()<br>t.begin_fill()<br>t.circle(15)<br>t.end_fill()</p>
+<p>t.color(“black”)<br>t.pu()<br>t.seth(90)<br>t.fd(12)<br>t.seth(0)<br>t.fd(-3)<br>t.pd()<br>t.begin_fill()<br>t.circle(3)<br>t.end_fill()</p>
+<h1 id="腮"><a href="#腮" class="headerlink" title="腮"></a>腮</h1><p>t.color((255, 155, 192))<br>t.pu()<br>t.seth(90)<br>t.fd(-95)<br>t.seth(0)<br>t.fd(65)<br>t.pd()<br>t.begin_fill()<br>t.circle(30)<br>t.end_fill()</p>
+<h1 id="嘴"><a href="#嘴" class="headerlink" title="嘴"></a>嘴</h1><p>t.color(239, 69, 19)<br>t.pu()<br>t.seth(90)<br>t.fd(15)<br>t.seth(0)<br>t.fd(-100)<br>t.pd()<br>t.seth(-80)<br>t.circle(30, 40)<br>t.circle(40, 80)</p>
+<h1 id="身体"><a href="#身体" class="headerlink" title="身体"></a>身体</h1><p>t.color(“red”, (255, 99, 71))<br>t.pu()<br>t.seth(90)<br>t.fd(-20)<br>t.seth(0)<br>t.fd(-78)<br>t.pd()<br>t.begin_fill()<br>t.seth(-130)<br>t.circle(100, 10)<br>t.circle(300, 30)<br>t.seth(0)<br>t.fd(230)<br>t.seth(90)<br>t.circle(300, 30)<br>t.circle(100, 3)<br>t.color((255, 155, 192), (255, 100, 100))<br>t.seth(-135)<br>t.circle(-80, 63)<br>t.circle(-150, 24)<br>t.end_fill()</p>
+<h1 id="手"><a href="#手" class="headerlink" title="手"></a>手</h1><p>t.color((255, 155, 192))<br>t.pu()<br>t.seth(90)<br>t.fd(-40)<br>t.seth(0)<br>t.fd(-27)<br>t.pd()<br>t.seth(-160)<br>t.circle(300, 15)<br>t.pu()<br>t.seth(90)<br>t.fd(15)<br>t.seth(0)<br>t.fd(0)<br>t.pd()<br>t.seth(-10)<br>t.circle(-20, 90)</p>
+<p>t.pu()<br>t.seth(90)<br>t.fd(30)<br>t.seth(0)<br>t.fd(237)<br>t.pd()<br>t.seth(-20)<br>t.circle(-300, 15)<br>t.pu()<br>t.seth(90)<br>t.fd(20)<br>t.seth(0)<br>t.fd(0)<br>t.pd()<br>t.seth(-170)<br>t.circle(20, 90)</p>
+<h1 id="脚"><a href="#脚" class="headerlink" title="脚"></a>脚</h1><p>t.pensize(10)<br>t.color((240, 128, 128))<br>t.pu()<br>t.seth(90)<br>t.fd(-75)<br>t.seth(0)<br>t.fd(-180)<br>t.pd()<br>t.seth(-90)<br>t.fd(40)<br>t.seth(-180)<br>t.color(“black”)<br>t.pensize(15)<br>t.fd(20)</p>
+<p>t.pensize(10)<br>t.color((240, 128, 128))<br>t.pu()<br>t.seth(90)<br>t.fd(40)<br>t.seth(0)<br>t.fd(90)<br>t.pd()<br>t.seth(-90)<br>t.fd(40)<br>t.seth(-180)<br>t.color(“black”)<br>t.pensize(15)<br>t.fd(20)</p>
+<h1 id="尾巴"><a href="#尾巴" class="headerlink" title="尾巴"></a>尾巴</h1><p>t.pensize(4)<br>t.color((255, 155, 192))<br>#画笔抬起，不留下痕迹<br>t.pu()<br>t.seth(90)<br>t.fd(70)<br>t.seth(0)<br>t.fd(95)<br>#画笔落下，留下痕迹<br>t.pd()<br>t.seth(0)<br>#画圆，第一个数字是半径，第二个数字是角度<br>t.circle(70, 20)<br>t.circle(10, 330)<br>t.circle(70, 30)<br>t.end_fill()<br>#结束绘画<br>t.done()</p>
+
+    </div>
+    <div align="center">
+     <p style="text-align:center; color:orange; font-size:26px">安卓学习教程公众号</p>
+       <img src="/./img/ercode.jpg" width="258" height="258">
+     </div>
+    
+    <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+            <span class="reward-type">
+                <img class="wechat" src="/./img/reward-wepay.jpg"><b>微信打赏</b>
+            </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">
+        祝你事业顺心，富贵吉祥，赞赏鼓励
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">清风明月</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2021/06/29/categories/%E5%B7%A5%E5%85%B7/Python%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/" class="pre-post btn btn-default" title='Python常用工具包汇总'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            Python常用工具包汇总</span>
+    </a>
+    
+    
+    <a href="/2021/06/24/categories/Python/Python%E5%A4%8D%E5%88%B6%E6%96%87%E4%BB%B6/" class="next-post btn btn-default" title='Python例子-复制文件'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            Python例子-复制文件</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    
+<div class="utteranc">
+  
+  <script
+    src='https://utteranc.es/client.js'
+    repo='yansil/snippet-comment'
+    issue-term='pathname'
+    issue-number=''
+    theme='github-light'
+    label=''
+    crossorigin='anonymous'
+    async
+  ></script>
+</div>
+
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E7%8C%AA%E4%BD%A9%E5%A5%87%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="toc-text">小猪佩奇代码实现如下：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%99%E5%AD%97"><span class="toc-text">写字</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%BC%BB%E5%AD%90"><span class="toc-text">鼻子</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%B4"><span class="toc-text">头</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%80%B3%E6%9C%B5"><span class="toc-text">耳朵</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9C%BC%E7%9D%9B"><span class="toc-text">眼睛</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%85%AE"><span class="toc-text">腮</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%98%B4"><span class="toc-text">嘴</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BA%AB%E4%BD%93"><span class="toc-text">身体</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%8B"><span class="toc-text">手</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%9A"><span class="toc-text">脚</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%BE%E5%B7%B4"><span class="toc-text">尾巴</span></a>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2021
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//yansil.github.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>
