@@ -1,0 +1,425 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="清风明月博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.3.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://Visen123.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="Android" />
+
+
+<meta name="description" content="协程是一种并发设计模式，您可以在 Android 平台上使用它来简化异步执行的代码。协程是在版本 1.3 中添加到 Kotlin 的，它基于来自其他语言的既定概念。
+在 Android 上，协程..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    Android上的Kotlin协程 |
+    
+    清风明月博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="清风明月博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /./img/beiixin.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='清风明月'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://Visen123.github.io">
+                        清风明月博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Android/"><i class="fa "></i>
+                                Android</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Python/"><i class="fa "></i>
+                                Python</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/小程序/"><i class="fa "></i>
+                                小程序</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/HarmonyOS/"><i class="fa "></i>
+                                HarmonyOS</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Android上的Kotlin协程">
+            
+            Android上的Kotlin协程
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/Android/">Android</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2024/03/08</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>协程是一种并发设计模式，您可以在 Android 平台上使用它来简化异步执行的代码。协程是在版本 1.3 中添加到 Kotlin 的，它基于来自其他语言的既定概念。</p>
+<p>在 Android 上，协程有助于管理长时间运行的任务，如果管理不当，这些任务可能会阻塞主线程并导致应用无响应。使用协程的专业开发者中有超过 50% 的人反映使用协程提高了工作效率。本主题介绍如何使用 Kotlin 协程解决以下问题，从而让您能够编写出更清晰、更简洁的应用代码。</p>
+<p>其他配置<br>协程是我们在 Android 上进行异步编程的推荐解决方案。值得关注的特点包括：</p>
+<p>轻量：您可以在单个线程上运行多个协程，因为协程支持挂起，不会使正在运行协程的线程阻塞。挂起比阻塞节省内存，且支持多个并行操作。<br>内存泄漏更少：使用结构化并发机制在一个作用域内执行多项操作。<br>内置取消支持：取消操作会自动在运行中的协程层次结构内传播。<br>Jetpack 集成：许多 Jetpack 库都包含提供全面协程支持的扩展。某些库还提供自己的协程作用域，可供您用于结构化并发。<br>示例概览<br>根据应用架构指南，本主题中的示例会发出网络请求并将结果返回到主线程，然后应用可以在主线程上向用户显示结果。</p>
+<p>具体而言，ViewModel 架构组件会在主线程上调用代码库层，以触发网络请求。本指南介绍了各种使用协程确保主线程畅通的各种解决方案。</p>
+<p>ViewModel 包含一组可直接与协程配合使用的 KTX 扩展。这些扩展是 lifecycle-viewmodel-ktx 库，在本指南中有用到。</p>
+<p>依赖项信息<br>如需在 Android 项目中使用协程，请将以下依赖项添加到应用的 build.gradle 文件中：</p>
+<p>Groovy<br>Kotlin</p>
+<p>dependencies {<br>    implementation ‘org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9’<br>}<br>在后台线程中执行<br>如果在主线程上发出网络请求，则主线程会处于等待或阻塞状态，直到收到响应。由于线程处于阻塞状态，因此操作系统无法调用 onDraw()，这会导致应用冻结，并有可能导致弹出“应用无响应”(ANR) 对话框。为了提供更好的用户体验，我们在后台线程上执行此操作。</p>
+<p>首先，我们来了解一下 Repository 类，看看它是如何发出网络请求的：</p>
+<p>sealed class Result<out R> {<br>    data class Success<out T>(val data: T) : Result<T>()<br>    data class Error(val exception: Exception) : Result<Nothing>()<br>}</p>
+<p>class LoginRepository(private val responseParser: LoginResponseParser) {<br>    private const val loginUrl = “<a target="_blank" rel="noopener" href="https://example.com/login&quot;">https://example.com/login&quot;</a></p>
+<pre><code>// Function that makes the network request, blocking the current thread
+fun makeLoginRequest(
+    jsonBody: String
+): Result&lt;LoginResponse&gt; &#123;
+    val url = URL(loginUrl)
+    (url.openConnection() as? HttpURLConnection)?.run &#123;
+        requestMethod = &quot;POST&quot;
+        setRequestProperty(&quot;Content-Type&quot;, &quot;application/json; utf-8&quot;)
+        setRequestProperty(&quot;Accept&quot;, &quot;application/json&quot;)
+        doOutput = true
+        outputStream.write(jsonBody.toByteArray())
+        return Result.Success(responseParser.parse(inputStream))
+    &#125;
+    return Result.Error(Exception(&quot;Cannot open HttpURLConnection&quot;))
+&#125;
+</code></pre>
+<p>}<br>makeLoginRequest 是同步的，并且会阻塞发起调用的线程。为了对网络请求的响应建模，我们创建了自己的 Result 类。</p>
+<p>ViewModel 会在用户点击（例如，点击按钮）时触发网络请求：</p>
+<p>class LoginViewModel(<br>    private val loginRepository: LoginRepository<br>): ViewModel() {</p>
+<pre><code>fun login(username: String, token: String) &#123;
+    val jsonBody = &quot;&#123; username: \&quot;$username\&quot;, token: \&quot;$token\&quot;&#125;&quot;
+    loginRepository.makeLoginRequest(jsonBody)
+&#125;
+</code></pre>
+<p>}<br>使用上述代码，LoginViewModel 会在网络请求发出时阻塞界面线程。如需将执行操作移出主线程，最简单的方法是创建一个新的协程，然后在 I/O 线程上执行网络请求：</p>
+<p>class LoginViewModel(<br>    private val loginRepository: LoginRepository<br>): ViewModel() {</p>
+<pre><code>fun login(username: String, token: String) &#123;
+    // Create a new coroutine to move the execution off the UI thread
+    viewModelScope.launch(Dispatchers.IO) &#123;
+        val jsonBody = &quot;&#123; username: \&quot;$username\&quot;, token: \&quot;$token\&quot;&#125;&quot;
+        loginRepository.makeLoginRequest(jsonBody)
+    &#125;
+&#125;
+</code></pre>
+<p>}<br>下面我们仔细分析一下 login 函数中的协程代码：</p>
+<p>viewModelScope 是预定义的 CoroutineScope，包含在 ViewModel KTX 扩展中。请注意，所有协程都必须在一个作用域内运行。一个 CoroutineScope 管理一个或多个相关的协程。<br>launch 是一个函数，用于创建协程并将其函数主体的执行分派给相应的调度程序。<br>Dispatchers.IO 指示此协程应在为 I/O 操作预留的线程上执行。<br>login 函数按以下方式执行：</p>
+<p>应用从主线程上的 View 层调用 login 函数。<br>launch 会创建一个新的协程，并且网络请求在为 I/O 操作预留的线程上独立发出。<br>在该协程运行时，login 函数会继续执行，并可能在网络请求完成前返回。请注意，为简单起见，我们暂时忽略掉网络响应。<br>由于此协程通过 viewModelScope 启动，因此在 ViewModel 的作用域内执行。如果 ViewModel 因用户离开屏幕而被销毁，则 viewModelScope 会自动取消，且所有运行的协程也会被取消。</p>
+<p>前面的示例存在的一个问题是，调用 makeLoginRequest 的任何项都需要记得将执行操作显式移出主线程。下面我们来看看如何修改 Repository 以解决这一问题。</p>
+<p>使用协程确保主线程安全<br>如果函数不会在主线程上阻止界面更新，我们即将其视为是主线程安全的。makeLoginRequest 函数不是主线程安全的，因为从主线程调用 makeLoginRequest 确实会阻塞界面。可以使用协程库中的 withContext() 函数将协程的执行操作移至其他线程：</p>
+<p>class LoginRepository(…) {<br>    …<br>    suspend fun makeLoginRequest(<br>        jsonBody: String<br>    ): Result<LoginResponse> {</p>
+<pre><code>    // Move the execution of the coroutine to the I/O dispatcher
+    return withContext(Dispatchers.IO) &#123;
+        // Blocking network request code
+    &#125;
+&#125;
+</code></pre>
+<p>}<br>withContext(Dispatchers.IO) 将协程的执行操作移至一个 I/O 线程，这样一来，我们的调用函数便是主线程安全的，并且支持根据需要更新界面。</p>
+<p>makeLoginRequest 还会用 suspend 关键字进行标记。Kotlin 利用此关键字强制从协程内调用函数。</p>
+<p>注意：为更轻松地进行测试，我们建议将 Dispatchers 注入 Repository 层。如需了解详情，请参阅在 Android 上测试协程。<br>在以下示例中，协程是在 LoginViewModel 中创建的。由于 makeLoginRequest 将执行操作移出主线程，login 函数中的协程现在可以在主线程中执行：</p>
+<p>class LoginViewModel(<br>    private val loginRepository: LoginRepository<br>): ViewModel() {</p>
+<pre><code>fun login(username: String, token: String) &#123;
+
+    // Create a new coroutine on the UI thread
+    viewModelScope.launch &#123;
+        val jsonBody = &quot;&#123; username: \&quot;$username\&quot;, token: \&quot;$token\&quot;&#125;&quot;
+
+        // Make the network call and suspend execution until it finishes
+        val result = loginRepository.makeLoginRequest(jsonBody)
+
+        // Display result of the network request to the user
+        when (result) &#123;
+            is Result.Success&lt;LoginResponse&gt; -&gt; // Happy path
+            else -&gt; // Show error in UI
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>}<br>请注意，此处仍需要协程，因为 makeLoginRequest 是一个 suspend 函数，而所有 suspend 函数都必须在协程中执行。</p>
+<p>此代码与前面的 login 示例的不同之处体现在以下几个方面：</p>
+<p>launch 不接受 Dispatchers.IO 参数。如果您未将 Dispatcher 传递至 launch，则从 viewModelScope 启动的所有协程都会在主线程中运行。<br>系统现在会处理网络请求的结果，以显示成功或失败界面。<br>login 函数现在按以下方式执行：</p>
+<p>应用从主线程上的 View 层调用 login() 函数。<br>launch 在主线程上创建新协程，然后协程开始执行。<br>在协程内，调用 loginRepository.makeLoginRequest() 现在会挂起协程的进一步执行操作，直至 makeLoginRequest() 中的 withContext 块结束运行。<br>withContext 块结束运行后，login() 中的协程在主线程上恢复执行操作，并返回网络请求的结果。<br>注意：如需与 ViewModel 层中的 View 通信，请按照应用架构指南中的建议，使用 LiveData。遵循此模式时，ViewModel 中的代码会在主线程上执行，因此您可以直接调用 MutableLiveData 的 setValue() 函数。<br>处理异常<br>为了处理 Repository 层可能抛出的异常，请使用 Kotlin 对异常的内置支持。在以下示例中，我们使用的是 try-catch 块：</p>
+<p>class LoginViewModel(<br>    private val loginRepository: LoginRepository<br>): ViewModel() {</p>
+<pre><code>fun login(username: String, token: String) &#123;
+    viewModelScope.launch &#123;
+        val jsonBody = &quot;&#123; username: \&quot;$username\&quot;, token: \&quot;$token\&quot;&#125;&quot;
+        val result = try &#123;
+            loginRepository.makeLoginRequest(jsonBody)
+        &#125; catch(e: Exception) &#123;
+            Result.Error(Exception(&quot;Network request failed&quot;))
+        &#125;
+        when (result) &#123;
+            is Result.Success&lt;LoginResponse&gt; -&gt; // Happy path
+            else -&gt; // Show error in UI
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>}<br>在此示例中，makeLoginRequest() 调用抛出的任何意外异常都会处理为界面错误。</p>
+
+    </div>
+    <div align="center">
+     <p style="text-align:center; color:orange; font-size:26px">安卓学习教程公众号</p>
+       <img src="/./img/ercode.jpg" width="258" height="258">
+     </div>
+    
+    <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+            <span class="reward-type">
+                <img class="wechat" src="/./img/reward-wepay.jpg"><b>微信打赏</b>
+            </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">
+        祝你事业顺心，富贵吉祥，赞赏鼓励
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">清风明月</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2024/03/10/categories/Android/Android-Jetpack%E7%BB%84%E4%BB%B6%E7%AE%80%E4%BB%8B/" class="pre-post btn btn-default" title='Android-Jetpack组件简介'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            Android-Jetpack组件简介</span>
+    </a>
+    
+    
+    <a href="/2023/12/26/categories/%E5%90%8E%E7%AB%AF/SpringBoot%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" class="next-post btn btn-default" title='javaspringboot实现上传文件接口'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            javaspringboot实现上传文件接口</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    
+<div class="utteranc">
+  
+  <script
+    src='https://utteranc.es/client.js'
+    repo='yansil/snippet-comment'
+    issue-term='pathname'
+    issue-number=''
+    theme='github-light'
+    label=''
+    crossorigin='anonymous'
+    async
+  ></script>
+</div>
+
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <p>暂无目录</p>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2021
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//yansil.github.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>
