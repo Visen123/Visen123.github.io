@@ -1,0 +1,347 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="清风明月博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.3.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://Visen123.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="Android" />
+
+
+<meta name="description" content="String类型String类型是字符串的对象包装类型，可以使用String构造函数来创建
+var str = new String(‘hello world’)也可以使用使用字面量创建
+var..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    JS字符串常用方法 |
+    
+    清风明月博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="清风明月博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /./img/beiixin.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='清风明月'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://Visen123.github.io">
+                        清风明月博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Android/"><i class="fa "></i>
+                                Android</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Python/"><i class="fa "></i>
+                                Python</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/小程序/"><i class="fa "></i>
+                                小程序</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/HarmonyOS/"><i class="fa "></i>
+                                HarmonyOS</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="JS字符串常用方法">
+            
+            JS字符串常用方法
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2022/05/16</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>String类型<br>String类型是字符串的对象包装类型，可以使用String构造函数来创建</p>
+<p>var str = new String(‘hello world’)<br>也可以使用使用字面量创建</p>
+<p>var str = ‘hello world’<br>String类型的每个实例都有一个length属性，表示字符串中含有多少个字符</p>
+<p>var str = ‘hello world’<br>console.log(str.length);  //11<br>字符方法<br>1.charAt()<br>通过索引查找对应的字符</p>
+<p>var str = ‘hello’;<br>cosnole.log(str.charAt(1));  //e<br>2.charCodeAt()<br>通过索引查找对应字符的字符集编码</p>
+<p>var str = ‘hello’;<br>cosnole.log(str.charCodeAt(1));  //101<br>字符串操作方法<br>3.concat()<br>字符串拼接：将一到多个字符串拼接起来，返回新的字符串,原值不发生变化，可以接收多个参数</p>
+<p>var str = ‘hello ‘;<br>var newStr = str.concat(‘world’,’!’);<br>console.log(newStr);  ///hello world!<br>4.slice()<br>slice(n,m) 字符串截取，从索引n开始截取到索引m，不包含m，包前不包后,源字符串不发生变化</p>
+<p>var str = ‘hello world’;<br>var str2 = str.slice(1,7);<br> console.log(str2);  //ello w<br>5.substr()<br>subStr(n,m) 字符串截取，从索引n开始截取m个，源字符串不发生变化</p>
+<p>var str = ‘hello world’;<br>var str2 = str.substr(1,7);<br> console.log(str2);  //ello wo<br>6.substring()<br>substring(n,m) 字符串截取，与slice()相同，从索引n开始截取到索引m，不包含m，包前不包后，源字符串不发生变化</p>
+<p>var str = ‘hello world’;<br>var str2 = str.substring(1,7);<br> console.log(str2);  //ello w<br>slice(n),substr(n),substring(n) 都可以只传一个参数，只传一个参数是这三个的作用是一样的，都表示从所引n开始截取后面所有的字符然后返回</p>
+<p>var str = ‘hello world’;<br>var str2 = str.slice(1);<br>var str3 = str.substr(1);<br>var str4 = str.substring(1);<br> console.log(str2);  //ello world<br> console.log(str3);  //ello world<br> console.log(str4);  //ello world<br>字符串位置方法<br>7.indexOf()<br>从一个字符串中搜索给定的字符串，然后返回给定字符串的索引位置，如果没有找到返回-1，从前往后找，如果包含多个给定字符串，只返回查找到的第一个给定字符串的位置</p>
+<p>var str = ‘hello world!’;<br>console.log(str.indexOf(‘o’));  //4<br>console.log(str.indexOf(‘x’));  //-1<br>8.lastIndexOf()<br>从一个字符串中搜索给定的字符串，然后返回给定字符串的索引位置，如果没有找到返回-1，从后往前找，如果包含多个给定字符串，只返回查找到的第一个给定字符串的位置</p>
+<p>var str = ‘hello world!’;<br>console.log(str.lastIndexOf(‘o’));  //7<br>console.log(str.lastIndexOf(‘x’));  //-1<br>indeOf()和lastIndexOf()都可以接收可选的第二个参数，表示从那个位置开始搜索</p>
+<p>var str = ‘hello world’;<br>console.log(str.indexOf(‘o’,6));  //7<br>console.log(str.lastIndexOf(‘o’,6));  //4<br>字符串大小写转换<br>9.toUpperCase()<br>转大写</p>
+<p>var str = ‘hello world’;<br>console.log(str.toUpperCase());  //HELLO WORLD<br>10.toLowerCase()<br>转小写</p>
+<p>var str = ‘HELLO WORLD’;<br>console.log(str.toLowerCase());  //hello world<br>字符串的模式匹配方法<br>11.search()<br>search() 找到并返回第一个匹配项的索引，没有返回-1</p>
+<p>var str = ‘hello world’;<br> console.log(str.search(‘orl’));  //7<br>console.log(str.search(‘xx’));  //-1<br>12.match()<br>match() 该方法返回一个数组，数组第一项是要匹配的字符串，第二项返回第一个匹配项的索引，第三项是查找的字符串的全部字符,没有找到返回null</p>
+<p>var str = ‘hello world’;<br> console.log(str.match(‘orl’));  //[“o”, index: 4, input: “hello world”…]<br>console.log(str.match(‘xx’));  //-1<br>13.replace()<br>找到第一个要匹配的字符串并替换为要替换的字符串</p>
+<p>var str = ‘cat, bat, sat, fat’;<br>var str2 = str.replace(‘at’,’ond’);<br>console.log(str2);  //cond, bat, sat, fat<br>console.log(str);   //cat, bat, sat, fat<br>可以用全局标志的正则表达式替换匹配到的所有字符串</p>
+<p>var str = ‘cat, bat, sat, fat’;<br>var str2 = str.replace(/at/g,’ond’);<br>console.log(str2);  //cond, bond, sond, fond<br>console.log(str);   //cat, bat, sat, fat<br>14.split()<br>这个方法可以基于指定的分隔符将字符串分割成多个子字符串，返回一个新的数组，可以接收可选的第二个参数，用于指定数组大小</p>
+<p>var str = ‘hello’;<br>var str2 = str.split(‘’);<br>var str3 = str.split(‘’，3);<br>console.log(str2);  //[“h”, “e”, “l”, “l”, “o”]<br>console.log(str3);  //[“h”, “e”, “l”]<br>split(),match(),search(),replace(‘’,’’) 这几个方法都是可以跟正则配合的字符串方法</p>
+
+    </div>
+    <div align="center">
+     <p style="text-align:center; color:orange; font-size:26px">安卓学习教程公众号</p>
+       <img src="/./img/ercode.jpg" width="258" height="258">
+     </div>
+    
+    <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+            <span class="reward-type">
+                <img class="wechat" src="/./img/reward-wepay.jpg"><b>微信打赏</b>
+            </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">
+        祝你事业顺心，富贵吉祥，赞赏鼓励
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">清风明月</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2022/07/08/categories/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%B8%B8%E8%A7%81%E7%9A%84%E5%8D%81%E4%B8%83%E4%B8%AA%E6%A1%86%E6%9E%B6/" class="pre-post btn btn-default" title='前端常见的十七个框架'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            前端常见的十七个框架</span>
+    </a>
+    
+    
+    <a href="/2022/04/18/categories/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%9B%BE%E7%89%87%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81/" class="next-post btn btn-default" title='前端图片滑动验证'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            前端图片滑动验证</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    
+<div class="utteranc">
+  
+  <script
+    src='https://utteranc.es/client.js'
+    repo='yansil/snippet-comment'
+    issue-term='pathname'
+    issue-number=''
+    theme='github-light'
+    label=''
+    crossorigin='anonymous'
+    async
+  ></script>
+</div>
+
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <p>暂无目录</p>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2021
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//yansil.github.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>
