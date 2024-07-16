@@ -1,0 +1,585 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="清风明月博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.3.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://Visen123.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="Android" />
+
+
+<meta name="description" content="为了在 Jetpack Compose 环境下开发一个使用后置摄像头采集视频，并在帧差异检测的基础上自动录制的 Android 应用，我们可以使用 CameraX 和 ViewModel，同时结..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    安卓kotlinJetPack实现摄像头并录制视频 |
+    
+    清风明月博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="清风明月博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /./img/beiixin.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='清风明月'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://Visen123.github.io">
+                        清风明月博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Android/"><i class="fa "></i>
+                                Android</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Python/"><i class="fa "></i>
+                                Python</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/小程序/"><i class="fa "></i>
+                                小程序</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/HarmonyOS/"><i class="fa "></i>
+                                HarmonyOS</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="安卓kotlinJetPack实现摄像头并录制视频">
+            
+            安卓kotlinJetPack实现摄像头并录制视频
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/Android/">Android</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2024/07/16</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>为了在 Jetpack Compose 环境下开发一个使用后置摄像头采集视频，并在帧差异检测的基础上自动录制的 Android 应用，我们可以使用 CameraX 和 ViewModel，同时结合 FTP 上传功能。</p>
+<p>下面这个完整示例展示了如何使用 Jetpack Compose 和 CameraX 编写这个应用。</p>
+<ol>
+<li>添加依赖<br>在 build.gradle 中添加所需的依赖：</li>
+</ol>
+<p>dependencies {<br>    implementation “androidx.compose.ui:ui:1.3.0”<br>    implementation “androidx.compose.material:material:1.3.0”<br>    implementation “androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1”<br>    implementation “androidx.camera:camera-camera2:1.1.0”<br>    implementation “androidx.camera:camera-lifecycle:1.1.0”<br>    implementation “androidx.camera:camera-video:1.0.0-alpha28”<br>    implementation “androidx.camera:camera-view:1.1.0”<br>    implementation ‘commons-net:commons-net:3.6’<br>    implementation ‘androidx.activity:activity-compose:1.3.1’<br>}</p>
+<ol start="2">
+<li>权限配置<br>在 AndroidManifest.xml 中添加所需的权限：</li>
+</ol>
+<uses-permission android:name="android.permission.CAMERA" />
+<uses-permission android:name="android.permission.RECORD_AUDIO" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.INTERNET" />
+
+
+
+
+<ol start="3">
+<li>创建 ViewModel<br>我们需要一个 ViewModel 来管理摄像头的操作、视频帧分析和录像控制。</li>
+</ol>
+<p>创建 CameraViewModel.kt：</p>
+<p>import android.content.Context<br>import android.net.Uri<br>import android.os.Handler<br>import android.os.Looper<br>import android.util.Log<br>import androidx.camera.core.*<br>import androidx.camera.lifecycle.ProcessCameraProvider<br>import androidx.camera.video.*<br>import androidx.compose.runtime.mutableStateOf<br>import androidx.compose.runtime.remember<br>import androidx.core.content.ContextCompat<br>import androidx.lifecycle.ViewModel<br>import androidx.lifecycle.viewModelScope<br>import kotlinx.coroutines.Dispatchers<br>import kotlinx.coroutines.launch<br>import java.io.File<br>import java.text.SimpleDateFormat<br>import java.util.*<br>import java.util.concurrent.ExecutorService<br>import java.util.concurrent.Executors</p>
+<p>class CameraViewModel : ViewModel() {<br>    var isRecording = mutableStateOf(false)<br>    var previewUri = mutableStateOf&lt;Uri?&gt;(null)<br>    private var videoCapture: VideoCapture<Recorder>? = null<br>    private var recording: Recording? = null<br>    private lateinit var cameraExecutor: ExecutorService</p>
+<pre><code>fun startCamera(context: Context, previewView: PreviewView) &#123;
+    val cameraProviderFuture = ProcessCameraProvider.getInstance(context)
+
+    cameraProviderFuture.addListener(&#123;
+        val cameraProvider = cameraProviderFuture.get()
+        val preview = Preview.Builder().build().also &#123;
+            it.setSurfaceProvider(previewView.surfaceProvider)
+        &#125;
+
+        val recorder = Recorder.Builder()
+            .setQualitySelector(QualitySelector.from(Quality.HIGHEST))
+            .build()
+
+        videoCapture = VideoCapture.withOutput(recorder)
+        val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+
+        try &#123;
+            cameraProvider.unbindAll()
+            cameraProvider.bindToLifecycle(
+                context as androidx.lifecycle.LifecycleOwner,
+                cameraSelector,
+                preview,
+                videoCapture
+            )
+        &#125; catch (exc: Exception) &#123;
+            Log.e(&quot;CameraViewModel&quot;, &quot;Use case binding failed&quot;, exc)
+        &#125;
+
+        detectMotionAndRecord(context) // Start detecting motion and recording
+    &#125;, ContextCompat.getMainExecutor(context))
+
+    cameraExecutor = Executors.newSingleThreadExecutor()
+&#125;
+
+private fun detectMotionAndRecord(context: Context) &#123;
+    var prevFrame: ImageProxy? = null
+    val handler = Handler(Looper.getMainLooper())
+    val delayMillis = 100L
+
+    val captureRunnable = object : Runnable &#123;
+        override fun run() &#123;
+            if (isRecording.value) &#123;
+                recording?.stop()
+                isRecording.value = false
+            &#125;
+
+            // Capture frame
+            videoCapture?.takePicture(cameraExecutor, ContextCompat.getMainExecutor(context), object : ImageCapture.OnImageCapturedCallback() &#123;
+                override fun onCaptureSuccess(image: ImageProxy) &#123;
+                    if (prevFrame == null) &#123;
+                        prevFrame = image
+                    &#125; else &#123;
+                        // Compare frames
+                        val isDifferent = compareFrames(prevFrame!!, image)
+                        prevFrame?.close()
+                        prevFrame = image
+
+                        if (isDifferent) &#123;
+                            if (!isRecording.value) &#123;
+                                startRecording(context)
+                                isRecording.value = true
+                            &#125;
+                        &#125; else &#123;
+                            if (System.currentTimeMillis() - recordingStartTime &gt; 5000) &#123;
+                                recording?.stop()
+                                isRecording.value = false
+                            &#125;
+                        &#125;
+                    &#125;
+                    handler.postDelayed(this, delayMillis)
+                &#125;
+
+                override fun onError(exception: ImageCaptureException) &#123;
+                    Log.e(&quot;CameraViewModel&quot;, &quot;Image capture failed&quot;, exception)
+                &#125;
+            &#125;)
+        &#125;
+    &#125;
+    handler.post(captureRunnable)
+&#125;
+
+private var recordingStartTime = 0L
+
+private fun compareFrames(frame1: ImageProxy, frame2: ImageProxy): Boolean &#123;
+    // Implement frame comparison logic (e.g., by comparing pixel values)
+    return true // example return, implement actual comparison
+&#125;
+
+private fun startRecording(context: Context) &#123;
+    val fileName = SimpleDateFormat(&quot;yyyyMMdd_HHmmss&quot;, Locale.US)
+        .format(System.currentTimeMillis()) + &quot;.mp4&quot;
+    val file = File(context.externalMediaDirs.first(), fileName)
+    val outputOptions = VideoCapture.OutputFileOptions.Builder(file).build()
+
+    recordingStartTime = System.currentTimeMillis()
+    videoCapture?.startRecording(
+        outputOptions,
+        ContextCompat.getMainExecutor(context),
+        object : VideoCapture.OnVideoSavedCallback &#123;
+            override fun onVideoSaved(outputFileResults: VideoCapture.OutputFileResults) &#123;
+                val savedUri = Uri.fromFile(file)
+                previewUri.value = savedUri
+                uploadToFTP(file)
+            &#125;
+
+            override fun onError(videoCaptureError: Int, message: String, cause: Throwable?) &#123;
+                Log.e(&quot;CameraViewModel&quot;, &quot;Video capture failed: $message&quot;, cause)
+            &#125;
+        &#125;)
+&#125;
+
+private fun uploadToFTP(file: File) &#123;
+    viewModelScope.launch(Dispatchers.IO) &#123;
+        FTPUpload.uploadFile(
+            file.path,
+            &quot;192.168.10.100&quot;, 21,
+            &quot;yyy&quot;, &quot;xxx&quot;
+        )
+    &#125;
+&#125;
+</code></pre>
+<p>}</p>
+<ol start="4">
+<li>创建UI<br>在MainActivity.kt中设置UI：</li>
+</ol>
+<p>import android.Manifest<br>import android.os.Bundle<br>import androidx.activity.ComponentActivity<br>import androidx.activity.compose.setContent<br>import androidx.activity.result.contract.ActivityResultContracts<br>import androidx.activity.viewModels<br>import androidx.compose.foundation.layout.*<br>import androidx.compose.material.*<br>import androidx.compose.runtime.collectAsState<br>import androidx.compose.runtime.remember<br>import androidx.compose.ui.Modifier<br>import androidx.compose.ui.unit.dp<br>import androidx.core.content.ContextCompat<br>import com.google.accompanist.permissions.ExperimentalPermissionsApi<br>import com.google.accompanist.permissions.rememberMultiplePermissionsState<br>import com.google.accompanist.permissions.shouldShowRationale<br>import java.util.*</p>
+<p>class MainActivity : ComponentActivity() {<br>    private val cameraViewModel: CameraViewModel by viewModels()</p>
+<pre><code>override fun onCreate(savedInstanceState: Bundle?) &#123;
+    super.onCreate(savedInstanceState)
+
+    setContent &#123;
+        JetpackComposeCameraTheme &#123;
+            Surface(modifier = Modifier.fillMaxSize()) &#123;
+                val context = remember &#123; this &#125;
+                val permissionState = rememberMultiplePermissionsState(
+                    permissions = listOf(
+                        Manifest.permission.CAMERA,
+                        Manifest.permission.RECORD_AUDIO,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_EXTERNAL_STORAGE
+                    )
+                )
+
+                if (permissionState.allPermissionsGranted) &#123;
+                    CameraPreview(cameraViewModel)
+                &#125; else &#123;
+                    Column(
+                        Modifier
+                            .fillMaxSize()
+                            .padding(16.dp)
+                    ) &#123;
+                        Text(&quot;Permissions need to be granted to use the camera&quot;)
+
+                        Spacer(modifier = Modifier.height(8.dp))
+
+                        if (permissionState.shouldShowRationale) &#123;
+                            Text(&quot;Please allow the permissions.&quot;)
+                        &#125; else &#123;
+                            OutlinedButton(onClick = &#123; permissionState.launchMultiplePermissionRequest() &#125;) &#123;
+                                Text(&quot;Allow&quot;)
+                            &#125;
+                        &#125;
+                    &#125;
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>}</p>
+<p>@Composable<br>fun CameraPreview(cameraViewModel: CameraViewModel) {<br>    val context = LocalContext.current<br>    val isRecording = cameraViewModel.isRecording.collectAsState()</p>
+<pre><code>Column(modifier = Modifier.fillMaxSize()) &#123;
+    Box(modifier = Modifier
+        .weight(1f)
+        .fillMaxSize()) &#123;
+
+        AndroidView(
+            factory = &#123; ctx -&gt;
+                val previewView = PreviewView(ctx)
+                cameraViewModel.startCamera(ctx, previewView)
+                previewView
+            &#125;,
+            modifier = Modifier.fillMaxSize()
+        )
+    &#125;
+
+    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) &#123;
+        Button(onClick = &#123; /* Trigger cameraViewModel logic here */ &#125;,
+            modifier = Modifier.padding(16.dp)) &#123;
+            Text(&quot;Start Recording&quot;)
+        &#125;
+
+        Button(onClick = &#123; /* Trigger cameraViewModel logic here */ &#125;,
+            modifier = Modifier.padding(16.dp)) &#123;
+            Text(&quot;Stop Recording&quot;)
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>}</p>
+<ol start="5">
+<li>实现FTP上传功能<br>创建FTPUpload.kt以实现FTP上传功能：</li>
+</ol>
+<p>import org.apache.commons.net.ftp.FTP<br>import org.apache.commons.net.ftp.FTPClient<br>import java.io.File<br>import java.io.FileInputStream<br>import java.io.IOException</p>
+<p>object FTPUpload {</p>
+<pre><code>fun uploadFile(filePath: String, server: String, port: Int, user: String, pass: String) &#123;
+    val ftpClient = FTPClient()
+    try &#123;
+        ftpClient.connect(server, port)
+        ftpClient.login(user, pass)
+        ftpClient.enterLocalPassiveMode()
+        ftpClient.setFileType(FTP.BINARY_FILE_TYPE)
+
+        val dateFolder = SimpleDateFormat(&quot;yyyyMMdd&quot;, Locale.US).format(System.currentTimeMillis())
+        ftpClient.makeDirectory(dateFolder)
+        ftpClient.changeWorkingDirectory(dateFolder)
+
+        val firstRemoteFile = File(filePath).name
+        val inputStream = FileInputStream(filePath)
+
+        println(&quot;Start uploading first file&quot;)
+        val done = ftpClient.storeFile(firstRemoteFile, inputStream)
+        inputStream.close()
+
+        if (done) &#123;
+            println(&quot;File is uploaded successfully.&quot;)
+        &#125;
+    &#125; catch (ex: IOException) &#123;
+        ex.printStackTrace()
+    &#125; finally &#123;
+        try &#123;
+            if (ftpClient.isConnected) &#123;
+                ftpClient.logout()
+                ftpClient.disconnect()
+            &#125;
+        &#125; catch (ex: IOException) &#123;
+            ex.printStackTrace()
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>}</p>
+<p>通过这些代码片段，可以使用Jetpack Compose开发一个能够通过手机后置主摄像头录制视频、检测画面差异、实时预览并将视频上传至FTP服务器的Android应用。</p>
+
+    </div>
+    <div align="center">
+     <p style="text-align:center; color:orange; font-size:26px">安卓学习教程公众号</p>
+       <img src="/./img/ercode.jpg" width="258" height="258">
+     </div>
+    
+    <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+            <span class="reward-type">
+                <img class="wechat" src="/./img/reward-wepay.jpg"><b>微信打赏</b>
+            </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">
+        祝你事业顺心，富贵吉祥，赞赏鼓励
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">清风明月</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+    <a href="/2021/09/02/categories/%E5%B7%A5%E5%85%B7/Android%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%BF%85%E5%A4%87%E5%B7%A5%E5%85%B7/" class="next-post btn btn-default" title='Android开发工程师必备工具'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            Android开发工程师必备工具</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    
+<div class="utteranc">
+  
+  <script
+    src='https://utteranc.es/client.js'
+    repo='yansil/snippet-comment'
+    issue-term='pathname'
+    issue-number=''
+    theme='github-light'
+    label=''
+    crossorigin='anonymous'
+    async
+  ></script>
+</div>
+
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <p>暂无目录</p>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2021
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//yansil.github.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>
