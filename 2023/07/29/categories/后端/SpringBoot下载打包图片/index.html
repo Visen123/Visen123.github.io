@@ -1,0 +1,649 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="清风明月博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.3.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://Visen123.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="Android" />
+
+
+<meta name="description" content="现有需求：将若干图片从互联网下载，并打包成指定压缩包，返回给前端
+实现功能前提，思考流程判断当前文件夹是否存在（防止上一次删除失败），存在则删除创建文件夹下载文件将文件打包将文件传输给前端删除文..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    SpringBoot下载打包图片 |
+    
+    清风明月博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="清风明月博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /./img/beiixin.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='清风明月'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://Visen123.github.io">
+                        清风明月博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Android/"><i class="fa "></i>
+                                Android</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Python/"><i class="fa "></i>
+                                Python</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/小程序/"><i class="fa "></i>
+                                小程序</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/HarmonyOS/"><i class="fa "></i>
+                                HarmonyOS</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="SpringBoot下载打包图片">
+            
+            SpringBoot下载打包图片
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2023/07/29</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>现有需求：将若干图片从互联网下载，并打包成指定压缩包，返回给前端</p>
+<p>实现功能<br>前提，思考流程<br>判断当前文件夹是否存在（防止上一次删除失败），存在则删除<br>创建文件夹<br>下载文件<br>将文件打包<br>将文件传输给前端<br>删除文件<br>第一步，前后端文件交互<br>采用 HttpServletResponse 通过流来传输文件，具体接口定义为下面代码：</p>
+<pre><code>@ApiOperation(value = &quot;导出图片&quot;, httpMethod = &quot;POST&quot;)
+@RequestMapping(value = &quot;/downloadImage&quot;, method = RequestMethod.POST, produces = &quot;application/json&quot;)
+public void downloadImage(
+        @ApiParam(name = &quot;RequestVo&quot;, value = &quot;查询实体&quot;)
+        @Validated @RequestBody RequestVo requestVo, HttpServletResponse response)&#123;
+    log.info(&quot;检验数据表批量导出图片入参：&quot; + requestVo);
+    service.batchDownloadImage(requestVo, response);
+&#125;
+</code></pre>
+<p>接口不需要定义返回值，当通过流传输的时候，就不会通过这边的返回来返回内容</p>
+<p>确定了如何去和前端进行交互后，就需要书写与互联网交互的工具类 HttpUtil</p>
+<p>第二步，网络交互 HttpUtil<br>这里简单介绍一下要做的事情</p>
+<p>通过 URL 下载文件到本地<br>通过 URL 连接到对应网址，建立稳定连接后，获取连接的输入流，创建本地的输出流，通过输出流写到本地文件并命名<br>将本地文件传输给前端<br>具体实现：通过 response 获取 输出流，获取本地文件的输入流，读取到字节数组byte[]当中，通过输出流输出字节数组，即完成了传输<br>工具类代码：</p>
+<p>package com.hwh.communitymanage.utils;</p>
+<p>import lombok.extern.slf4j.Slf4j;</p>
+<p>import javax.activation.MimetypesFileTypeMap;<br>import javax.servlet.http.HttpServletRequest;<br>import javax.servlet.http.HttpServletResponse;<br>import java.io.*;<br>import java.net.URL;<br>import java.net.URLConnection;<br>import java.net.URLEncoder;</p>
+<p>/**</p>
+<ul>
+<li>@description: 网络文件下载工具类</li>
+<li>@author: HWH</li>
+<li>@create: 2022-10-14 09:28</li>
+<li>*/</li>
+</ul>
+<p>@Slf4j<br>public class HttpUtil {</p>
+<pre><code>/**
+ * Http 下载文件到本地
+ * @param urlStr 下载文件地址
+ * @param path 存储全路径（包括名称）
+ */
+public static void downloadHttpFileToLocal(String urlStr, String path)&#123;
+    try&#123;
+        URL url = new URL(urlStr);
+        URLConnection conn = url.openConnection();
+        InputStream inputStream = conn.getInputStream();
+        // 创建输出流
+        FileOutputStream outputStream = new FileOutputStream(path);
+        int byteRead;
+        byte[] buffer = new byte[1024];
+        while((byteRead = inputStream.read(buffer)) != -1)&#123;
+            outputStream.write(buffer, 0, byteRead);
+        &#125;
+        // 关闭流
+        inputStream.close();
+        outputStream.close();;
+    &#125;catch (Exception e)&#123;
+        throw new RuntimeException(&quot;下载失败&quot;, e);
+    &#125;
+&#125;
+
+
+/**
+ * 传输文件流
+ * @param path 传输文件路径
+ * @param fileName 传输文件名称
+ * @param response http响应
+ * @return 是否成功传输
+ */
+public static Boolean transferFileStream(String path, String fileName, HttpServletResponse response)&#123;
+    if(path == null)&#123;
+        log.error(&quot;文件路径不能为空&quot;);
+        return false;
+    &#125;
+    File file = new File(path + File.separator + fileName);
+    if(!file.exists())&#123;
+        log.error(&quot;文件不存在&quot;);
+        return false;
+    &#125;
+    long startTime = System.currentTimeMillis();
+    FileInputStream inputStream = null;
+    BufferedInputStream bis = null;
+    try&#123;
+        // 设置头
+        setResponse(fileName, response);
+        // 开启输入流
+        inputStream = new FileInputStream(file);
+        bis = new BufferedInputStream(inputStream);
+        // 获取输出流
+        OutputStream os = response.getOutputStream();
+        // 读取文件
+        byte[] buffer = new byte[1024];
+        int i;
+        // 传输
+        while((i = bis.read(buffer)) != -1)&#123;
+            os.write(buffer, 0, i);
+        &#125;
+
+        // 计时
+        long endTime = System.currentTimeMillis();
+        log.info(&quot;文件传输时间： &#123;&#125; ms&quot;, endTime - startTime);
+    &#125;catch (Exception e)&#123;
+        throw new RuntimeException(&quot;文件传输失败&quot;);
+    &#125;finally &#123;
+        try&#123;
+            if(inputStream != null)&#123;
+                inputStream.close();
+            &#125;
+            if(bis != null)&#123;
+                bis.close();
+            &#125;
+        &#125;catch (IOException e)&#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+    return true;
+&#125;
+
+private static void setResponse(String fileName, HttpServletResponse response) throws UnsupportedEncodingException &#123;
+    response.addHeader(&quot;Content-Disposition&quot;,
+            &quot;attachment;fileName=&quot; + URLEncoder.encode(fileName, &quot;UTF-8&quot;));// 设置文件名
+&#125;
+</code></pre>
+<p>}</p>
+<p>第三步，文件交互 FileUtil<br>考虑：</p>
+<p>对于下载的图片，需要根据不同的需求放到不同的文件夹当中，可以根据日期，也可以根据类型。所以需要一个文件夹创建的功能</p>
+<p>并且有可能并发的情况下，由于文件的内容是在使用完后就要删除的，所以每个用户需要有专属的文件夹；还有单用户可能会发生并发的情况，可以考虑加上时间戳<br>因此考虑到要实现的功能为</p>
+<p>创建文件夹，包括父路径全部<br>删除文件夹包括文件夹下所有的内容<br>自我思考：当下载图片的并发可能会很大的时候，也就会涉及到服务器的IO频率高，可能会导致服务器处理不过来的情况</p>
+<p>因此可以采用缓存的方式，文件不再是即刻删除，而是采用延时删除，例如消息队列中的延时队列，定时删除线程等等方式实现</p>
+<p>但是也有弊端，存储空间可能会消耗大，并且要确定文件/文件夹的命中几率较高，才有实用的价值，不然就是白白增加了服务器的负担。</p>
+<p>实现：</p>
+<p>回到正题，如何实现现有的功能</p>
+<p>创建文件夹，采用Files.createDirectories(Path path) 方法，就可以将本目录以及父目录全部创建完成<br>删除文件夹，采用递归的方式，当是文件夹的时候，向下递归，知道遇到文件再删除，然后删除空文件夹<br>下面贴出我的代码实现：</p>
+<p>package com.hwh.communitymanage.utils;</p>
+<p>import lombok.extern.slf4j.Slf4j;</p>
+<p>import java.io.File;<br>import java.io.FileOutputStream;<br>import java.io.InputStream;<br>import java.io.OutputStream;<br>import java.nio.file.Files;<br>import java.nio.file.Path;<br>import java.nio.file.Paths;<br>import java.util.UUID;</p>
+<p>/**</p>
+<ul>
+<li><p>@Author: HwH</p>
+</li>
+<li><p>@Description:</p>
+</li>
+<li><p>@Date: created in 15:38  2022/9/27</p>
+</li>
+<li><p>/<br>@Slf4j<br>public class FileUtil {</p>
+<p>  /**</p>
+<ul>
+<li><p>强制创建文件夹，连同父级同时创建，同时如果本层文件夹已存在，删除</p>
+</li>
+<li><p>@param pathStr 文件路径</p>
+</li>
+<li><p>/<br>public static boolean makeDirAndParent(String pathStr){<br>  // 如果存在，删除<br>  File file = new File(pathStr);<br>  if(file.exists()){</p>
+<pre><code>  deletedPath(pathStr);
+</code></pre>
+<p>  }</p>
+<p>  try {</p>
+<pre><code>  // 创建父级及本级文件夹
+  Path path = Paths.get(pathStr);
+  Files.createDirectories(path);
+</code></pre>
+<p>  }catch (Exception e){</p>
+<pre><code>  throw new RuntimeException(&quot;创建文件夹失败&quot;);
+</code></pre>
+<p>  }<br>  return true;<br>}</p>
+</li>
+</ul>
+<p>  /**</p>
+<ul>
+<li>删除文件夹及文件夹下的文件</li>
+<li>@param sourcePath 文件夹路径</li>
+<li>@return 如果删除成功true否则false</li>
+<li>/<br>public static boolean deletedPath(String sourcePath){<br>  File sourceFile = new File(sourcePath);<br>  if(!sourceFile.exists()){<pre><code>  log.error(&quot;文件不存在, 删除失败&quot;);
+  return false;
+</code></pre>
+  }<br>  // 获取文件下子目录<br>  File[] fileList = sourceFile.listFiles();<br>  if(fileList != null) {<pre><code>  // 遍历
+  for (File file : fileList) &#123;
+      // 判断是否为子目录
+      if (file.isDirectory()) &#123;
+          deletedPath(file.getPath());
+      &#125; else &#123;
+          file.delete();
+      &#125;
+  &#125;
+</code></pre>
+  }<br>  sourceFile.delete();<br>  return true;<br>}<br>}</li>
+</ul>
+</li>
+</ul>
+<p>第四步，压缩文件夹 ZipUtil<br>这里为什么说是压缩文件夹而不是压缩文件，因为在我看来所有需要的文件和文件都在一个文件夹下面，可以是根目录，也可以是自定目录，比如：/image/123456，此时123456下全是图片，不管是文件夹还是文件，所以说这里只需要压缩一个自定的文件夹就足够了</p>
+<p>具体的实现：</p>
+<p>通过文件夹路径创建 File<br>判断是否是文件夹（这里也可以做成非文件夹格式，写成通用的方式，也就不仅限于传文件夹了）<br>获取文件夹下的内容fileList(因为当前文件夹是不需要打包的，所以会放到上层遍历)<br>构建 ZipOutputStream 作为递归参数<br>遍历 fileList，递归处理<br>判断是文件，构建ZipEntry<br>判断是文件夹，遍历递归<br>递归完成，关闭流<br>代码实现：</p>
+<p>package com.hwh.communitymanage.utils;</p>
+<p>import io.jsonwebtoken.lang.Collections;<br>import lombok.extern.slf4j.Slf4j;<br>import org.springframework.beans.factory.annotation.Value;</p>
+<p>import java.io.*;<br>import java.util.List;<br>import java.util.zip.ZipEntry;<br>import java.util.zip.ZipOutputStream;</p>
+<p>/**</p>
+<ul>
+<li>@description: 压缩工具类</li>
+<li>@author: HWH</li>
+<li>@create: 2022-10-14 10:21</li>
+<li>*/</li>
+</ul>
+<p>@Slf4j<br>public class ZipUtil {</p>
+<pre><code>/**
+ * 文件夹内容批量压缩
+ * @param sourcePath 文件夹路径列表(压缩后不包括该文件夹)
+ * @param targetPath 存储路径路径
+ * @param zipName 压缩文件名称
+ * @return zip的绝对路径
+ */
+public static boolean fileToZip(String sourcePath, String targetPath, String zipName)&#123;
+    if(sourcePath == null || targetPath == null)&#123;
+        log.error(&quot;文件夹路径/存放/文件名 不能为空, filePathList:&#123;&#125;, targetPath:&#123;&#125;&quot;, sourcePath, targetPath);
+        return false;
+    &#125;
+    // 开始时间
+    long startTime = System.currentTimeMillis();
+    FileOutputStream fos = null;
+    ZipOutputStream zos = null;
+    try&#123;
+        // 读取文件夹
+        File sourceFile = new File(sourcePath);
+        if(!sourceFile.exists() || !sourceFile.isDirectory())&#123;
+            log.error(&quot;文件夹不存在, sourceFile: &#123;&#125;&quot;, sourcePath);
+            return false;
+        &#125;
+        // 获取文件夹下内容
+        File[] fileList = sourceFile.listFiles();
+        if(fileList == null || fileList.length == 0 )&#123;
+            log.error(&quot;文件夹不能为空, sourceFile: &#123;&#125;&quot;, sourceFile);
+            return false;
+        &#125;
+        // 开启输出流
+        fos = new FileOutputStream(targetPath + File.separator + zipName);
+        zos = new ZipOutputStream(fos);
+        // 遍历文件夹下所有
+        for(File file : fileList)&#123;
+            compress(file, zos, file.getName());
+        &#125;
+        // 结束时间
+        long end = System.currentTimeMillis();
+        log.info(&quot;文件压缩耗时：&#123;&#125; ms&quot;, end - startTime);
+    &#125;catch (Exception e)&#123;
+        throw new RuntimeException(&quot;文件压缩失败&quot;);
+    &#125;finally &#123;
+        // 关闭流
+        try&#123;
+            if(zos != null)&#123;
+                zos.close();
+            &#125;
+            if(fos != null)&#123;
+                fos.close();
+            &#125;
+        &#125;catch (IOException e)&#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+    return true;
+&#125;
+
+
+/**
+ * 递归文件压缩
+ * @param sourceFile 来源文件/文件夹
+ * @param zos 文件流
+ * @param name 名称
+ */
+private static void compress(File sourceFile, ZipOutputStream zos, String name) throws IOException &#123;
+    byte[] buffer = new byte[1024 * 1024];
+    // 文件
+    if(sourceFile.isFile())&#123;
+        // 添加进压缩包
+        zos.putNextEntry(new ZipEntry(name));
+        BufferedInputStream bis = new BufferedInputStream(new FileInputStream(sourceFile));
+        int read;
+        while((read = bis.read(buffer, 0, 1024)) != -1)&#123;
+            zos.write(buffer, 0, read);
+        &#125;
+        zos.closeEntry();
+        bis.close();
+    &#125;
+    // 文件夹
+    else&#123;
+        // 获取文件夹下的文件
+        File[] fileList = sourceFile.listFiles();
+        // 空文件夹处理
+        if(fileList == null || fileList.length == 0)&#123;
+            zos.putNextEntry(new ZipEntry(name + &quot;/&quot;));
+            zos.closeEntry();
+        &#125;
+        // 非空，遍历递归向下处理
+        else&#123;
+            for(File file : fileList)&#123;
+                compress(file, zos, name + &quot;/&quot; + file.getName());
+            &#125;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>}</p>
+<p>第五步，串联使用<br>下面代码有用到属性注入，需要配置到 application.yml 中</p>
+<p>imagePath: image<br>1<br>串联实现代码：</p>
+<pre><code>private final String ZIP_SUFFIX = &quot;.zip&quot;;
+
+@Value(&quot;ImagePath&quot;)
+private String IMAGE_BASE_PATH;
+
+private boolean downloadImage(Request requestVo,List&lt;ImagePo&gt; urlList, HttpServletResponse response, boolean batch)&#123;
+    if(urlList.isEmpty())&#123;
+        throw new BusinessException(&quot;不存在相应信息&quot;);
+    &#125;
+    // 根目录 (基础路径/学号+时间戳)
+    String basePath = IMAGE_BASE_PATH + File.separator + AppContext.getContext().getUserInfo().getStudentNum() + System.currentTimeMillis();
+    // 创建根目录文件夹
+    FileUtil.makeDirAndParent(basePath);
+
+    // 压缩包名称
+    zipName = requestVo.getStartTime() + &quot;-&quot; + requestVo.getEndTime() + ZIP_SUFFIX;
+
+    // 下载图片
+    /....这里一般会复杂些，移除掉了.../
+    HttpUtil.downloadHttpFileToLocal(url, imagePath);
+
+    // 文件压缩
+    ZipUtil.fileToZip(basePath, zipName);
+
+    // 文件传输
+    HttpUtil.transferFileStream(basePath, zipName, response);
+
+    // 删除文件
+    FileUtil.deletedPath(basePath);
+
+    return true;
+&#125;
+</code></pre>
+
+    </div>
+    <div align="center">
+     <p style="text-align:center; color:orange; font-size:26px">安卓学习教程公众号</p>
+       <img src="/./img/ercode.jpg" width="258" height="258">
+     </div>
+    
+    <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+            <span class="reward-type">
+                <img class="wechat" src="/./img/reward-wepay.jpg"><b>微信打赏</b>
+            </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">
+        祝你事业顺心，富贵吉祥，赞赏鼓励
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">清风明月</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2023/08/22/categories/%E5%90%8E%E7%AB%AF/springboot%E5%AE%9E%E7%8E%B0%E9%AA%8C%E8%AF%81%E7%A0%81%E5%8A%9F%E8%83%BD/" class="pre-post btn btn-default" title='springboot实现验证码功能'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            springboot实现验证码功能</span>
+    </a>
+    
+    
+    <a href="/2023/06/23/categories/%E5%90%8E%E7%AB%AF/SpringBoot%20%E5%AE%9E%E7%8E%B0%E8%A7%86%E9%A2%91%E5%88%86%E6%AE%B5%E6%92%AD%E6%94%BE/" class="next-post btn btn-default" title='SpringBoot 实现视频分段播放'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            SpringBoot 实现视频分段播放</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    
+<div class="utteranc">
+  
+  <script
+    src='https://utteranc.es/client.js'
+    repo='yansil/snippet-comment'
+    issue-term='pathname'
+    issue-number=''
+    theme='github-light'
+    label=''
+    crossorigin='anonymous'
+    async
+  ></script>
+</div>
+
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <p>暂无目录</p>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2021
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//yansil.github.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>

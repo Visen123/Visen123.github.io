@@ -1,0 +1,450 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="清风明月博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.3.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://Visen123.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="Android" />
+
+
+<meta name="description" content="1、编写工具类生成4位随机数该工具类主要生成从0-9，a-z，A-Z范围内产生的4位随机数
+/**     * 产生4位随机字符串     */    public static String ..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    springboot实现验证码功能 |
+    
+    清风明月博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="清风明月博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /./img/beiixin.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='清风明月'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://Visen123.github.io">
+                        清风明月博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Android/"><i class="fa "></i>
+                                Android</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Python/"><i class="fa "></i>
+                                Python</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/小程序/"><i class="fa "></i>
+                                小程序</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/HarmonyOS/"><i class="fa "></i>
+                                HarmonyOS</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="springboot实现验证码功能">
+            
+            springboot实现验证码功能
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2023/08/22</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>1、编写工具类生成4位随机数<br>该工具类主要生成从0-9，a-z，A-Z范围内产生的4位随机数</p>
+<p>/**<br>     * 产生4位随机字符串<br>     */<br>    public static String getCheckCode() {<br>        String base = “0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz”;<br>        int size = base.length();<br>        Random r = new Random();<br>        StringBuffer sb = new StringBuffer();<br>        for (int i = 1; i &lt;= 4; i++) {<br>            //产生0到size-1的随机值<br>            int index = r.nextInt(size);<br>            //在base字符串中获取下标为index的字符<br>            char c = base.charAt(index);<br>            //将c放入到StringBuffer中去<br>            sb.append(c);<br>        }<br>        return sb.toString();<br>    }<br>2、编写常量类<br>用户常量的绑定，所有的常量都可以在ConfigConsts中定义，方便管理。</p>
+<p>import java.util.Arrays;<br>import java.util.List;</p>
+<p>public interface ConfigConsts {<br>    /**<br>     * 验证码存session<br>     */<br>    String IMAGE_CODE_SESSION = “IMAGE_CODE”;<br>}<br>3、获取验证码接口<br>这段代码的主要作用是为用户生成一个图片验证码，并将其显示在浏览器中。当调用该代码对应的URL时，服务器会创建一个包含随机验证码的图片，并将此验证码存储在用户的会话中，然后将该图片发送给用户的浏览器显示</p>
+<pre><code> /**
+ * 验证码
+ */
+@RequestMapping(&quot;/getImgCode&quot;)
+public void getImgCode(HttpServletRequest request, HttpServletResponse response) &#123;
+    int width = 80;
+    int height = 30;
+    BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+    //获取画笔
+    Graphics graphics = image.getGraphics();
+    //设置画笔颜色为白色
+    graphics.setColor(Color.white);
+    //填充图片
+    graphics.fillRect(0, 0, width, height);
+    //设置画笔颜色为黑色
+    graphics.setColor(Color.black);
+    //设置字体的小大
+    graphics.setFont(new Font(&quot;黑体&quot;, Font.BOLD, 24));
+    //产生4个随机验证码
+    String checkCode = CommonUtil.getCheckCode();
+    //将验证码放入HttpSession中
+    HttpSession session = request.getSession();
+    session.setAttribute(ConfigConsts.IMAGE_CODE_SESSION, checkCode);
+    //向图片上写入验证码
+    graphics.drawString(checkCode, 15, 25);
+    //将内存中的图片输出到浏览器
+    try &#123;
+        response.setContentType(&quot;image/png&quot;);
+        ImageIO.write(image, &quot;PNG&quot;, response.getOutputStream());
+    &#125; catch (IOException e) &#123;
+        e.printStackTrace();
+    &#125;
+&#125;
+</code></pre>
+<p>4、controller跳转到登录页<br>对“/loginPage”的GET请求，并将用户重定向到登录页面。当调用这个URL时，系统会返回一个名为”login”的视图（通常是一个HTML页面），这个视图通常用于显示登录表单，让用户输入用户名和密码等信息。</p>
+<pre><code>/**
+ * 跳转到登陆页面
+ * @return 登陆页面
+ */
+@GetMapping(&quot;/loginPage&quot;)
+public String loginPage()&#123;
+    return &quot;login&quot;;
+&#125;
+</code></pre>
+<p>5、登录界面<br>在Web页面上实现一个图形验证码的输入功能</p>
+<p>HTML部分：<br>创建一个表单项，内部包含两列（使用layui的栅格系统）。<br>在第一列中，有一个标签和一个文本输入框。标签用于显示一个验证码图标，输入框用于用户输入图形验证码。<br>在第二列中，有一个图片元素用于显示图形验证码图片。<br>JavaScript部分：<br>配置layui的静态资源路径和主入口模块。<br>初始化时，调用getImgCode函数加载验证码图片，并渲染表单。<br>getImgCode函数通过Ajax请求从服务器获取验证码图片，并将其显示在页面上的图片元素中。<br>这段代码主要利用了layui框架来实现页面的布局和交互，同时通过JavaScript和Ajax实现与服务器的通信，以获取并显示图形验证码。</p>
+<div class="layui-form-item">
+    <div class="layui-row">
+        <div class="layui-col-xs7">
+            <label class="layadmin-user-login-icon layui-icon layui-icon-vercode"></label>
+            <input type="text" name="code"  lay-verify="required" placeholder="图形验证码" class="layui-input">
+        </div>
+        <div class="layui-col-xs5">
+            <div style="margin-left: 10px;">
+
+<pre><code>            &lt;img id=&quot;codeImg&quot; class=&quot;layadmin-user-login-codeimg&quot;&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+ layui.config(&#123;
+    base: &#39;/static/layuiadmin/&#39; //静态资源所在路径
+&#125;).extend(&#123;
+    index: &#39;lib/index&#39; //主入口模块
+&#125;).use([&#39;index&#39;, &#39;user&#39;], function()&#123;
+    let $ = layui.$,
+        form = layui.form;
+    // 初始化
+    getImgCode();
+    form.render();
+&#125;
+/**
+ * 获取验证码
+ */
+function getImgCode() &#123;
+    let url = ctx + &#39;/getImgCode&#39;;
+    let xhr = new XMLHttpRequest();
+    xhr.open(&#39;GET&#39;, url, true);
+    xhr.responseType = &quot;blob&quot;;
+    xhr.onload = function() &#123;
+        if (this.status === 200) &#123;
+            let blob = this.response;
+            document.getElementById(&quot;codeImg&quot;).src = window.URL.createObjectURL(blob);
+        &#125;
+    &#125;
+    xhr.send();
+&#125;
+&lt;/script&gt;
+</code></pre>
+<p>6、验证码过滤<br>校验验证码的过滤器，基于Java的Spring框架。</p>
+<p>该过滤器继承了OncePerRequestFilter，确保每次请求只被过滤一次。<br>在doFilterInternal方法中，它首先检查请求是否是登录请求（通过检查请求路径是否为”/login”以及请求方法是否为”POST”）。<br>如果是登录请求，它会调用validate方法来校验验证码。<br>validate方法从请求中获取验证码，然后与会话中存储的验证码进行比对。如果验证码不存在、为空或不匹配，将抛出异常。<br>如果验证码校验失败，过滤器会捕获异常，并向响应中写入错误信息（以JSON格式）。<br>如果请求不是登录请求，过滤器不会进行验证码校验，直接让请求继续向下执行（通过调用filterChain.doFilter）。<br>如果登录请求成功通过验证码校验，代码会继续执行后续的过滤器或处理器。<br>@Component<br>public class ValidateCodeFilter extends OncePerRequestFilter {<br>    @Override<br>    protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {<br>        // 登陆请求<br>        if (“/login”.equals(httpServletRequest.getServletPath()) &amp;&amp;<br>                “POST”.equalsIgnoreCase(httpServletRequest.getMethod())){<br>            try {<br>                validate(httpServletRequest);<br>            } catch (Exception exception) {<br>                httpServletResponse.setCharacterEncoding(“utf-8”);<br>                httpServletResponse.setContentType(“application/json;charset=UTF-8”);<br>                PrintWriter writer = httpServletResponse.getWriter();<br>                writer.write(JSON.toJSONString(Result.failure(exception.getMessage())));<br>                writer.flush();<br>                return;<br>            }<br>        }<br>        // 不是一个登录请求，不做校验 直接通过<br>        filterChain.doFilter(httpServletRequest, httpServletResponse);<br>    }</p>
+<pre><code>private void validate(HttpServletRequest request) &#123;
+    String code = request.getParameter(&quot;code&quot;);
+    if (StringUtils.isBlank(code))&#123;
+        throw new RuntimeException(&quot;验证码不能为空&quot;);
+    &#125;
+    Object checkCode = request.getSession(false).getAttribute(ConfigConsts.IMAGE_CODE_SESSION);
+    if (Objects.isNull(checkCode)) &#123;
+        throw new RuntimeException(&quot;验证码不存在&quot;);
+    &#125;
+    if (!StringUtils.equalsIgnoreCase(code,checkCode.toString())) &#123;
+        throw new RuntimeException(&quot;验证码不匹配&quot;);
+    &#125;
+    request.getSession(false).removeAttribute(ConfigConsts.IMAGE_CODE_SESSION);
+&#125;
+</code></pre>
+<p>}<br>7、集成mysecurity<br>集成Spring Security的安全配置类，用于Web应用的安全性设置。</p>
+<p>通过@EnableWebSecurity和@Configuration注解，启用并配置Spring Security。<br>使用@EnableGlobalMethodSecurity(prePostEnabled = true)来启用全局方法级别的安全性，允许使用例如@PreAuthorize和@PostAuthorize等注解。<br>定义了一个名为MySecurityConfig的配置类，该类继承自WebSecurityConfigurerAdapter，用于定制安全性设置。<br>通过@Autowired注入了一个名为validateCodeFilter的验证码过滤器实例。<br>在configure(HttpSecurity http)方法中，对应用的安全性进行了详细配置：<br>允许所有人访问/loginPage和/getImgCode这两个路径，不进行任何安全检查。<br>对所有其他请求，需要用户进行身份验证（即需要登录后才能访问）。<br>在用户名和密码验证过滤器之前，添加了一个自定义的验证码过滤器（validateCodeFilter），用于在登录过程中校验验证码。<br>这段代码的主要目的是增强Web应用的安全性，通过添加验证码校验来防止自动化登录尝试和暴力破解，并限制了只有经过身份验证的用户才能访问应用的受保护资源。</p>
+<p>@Configuration<br>@EnableWebSecurity<br>@EnableGlobalMethodSecurity(prePostEnabled = true)<br>public class MySecurityConfig extends WebSecurityConfigurerAdapter {<br>    @Autowired<br>    private ValidateCodeFilter validateCodeFilter;</p>
+<pre><code>@Override
+protected void configure(HttpSecurity http) throws Exception &#123;
+    http.authorizeRequests()
+            // 放过
+            .antMatchers(&quot;/loginPage&quot;, &quot;/getImgCode&quot;).permitAll()
+            .anyRequest().authenticated()
+            .and()
+            // 过滤登录验证码
+            .addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)
+&#125;
+</code></pre>
+
+    </div>
+    <div align="center">
+     <p style="text-align:center; color:orange; font-size:26px">安卓学习教程公众号</p>
+       <img src="/./img/ercode.jpg" width="258" height="258">
+     </div>
+    
+    <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+            <span class="reward-type">
+                <img class="wechat" src="/./img/reward-wepay.jpg"><b>微信打赏</b>
+            </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">
+        祝你事业顺心，富贵吉祥，赞赏鼓励
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">清风明月</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2023/09/19/categories/%E5%90%8E%E7%AB%AF/javaspringboot%E5%AE%9E%E7%8E%B0%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E6%8E%A5%E5%8F%A3/" class="pre-post btn btn-default" title='javaspringboot实现上传文件接口'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            javaspringboot实现上传文件接口</span>
+    </a>
+    
+    
+    <a href="/2023/07/29/categories/%E5%90%8E%E7%AB%AF/SpringBoot%E4%B8%8B%E8%BD%BD%E6%89%93%E5%8C%85%E5%9B%BE%E7%89%87/" class="next-post btn btn-default" title='SpringBoot下载打包图片'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            SpringBoot下载打包图片</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    
+<div class="utteranc">
+  
+  <script
+    src='https://utteranc.es/client.js'
+    repo='yansil/snippet-comment'
+    issue-term='pathname'
+    issue-number=''
+    theme='github-light'
+    label=''
+    crossorigin='anonymous'
+    async
+  ></script>
+</div>
+
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <p>暂无目录</p>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2021
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//yansil.github.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>

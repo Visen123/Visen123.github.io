@@ -1,0 +1,375 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="清风明月博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.3.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://Visen123.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="Android" />
+
+
+<meta name="description" content="在Java Spring Boot项目中集成OnlyOffice来实现Word文档的在线编辑和保存，你需要遵循以下几个步骤：
+
+添加依赖首先，确保你的Maven pom.xml 文件中包含了On..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    Java SpringBoot集成onlyoffice实现word文档编辑保存 |
+    
+    清风明月博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="清风明月博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /./img/beiixin.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='清风明月'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://Visen123.github.io">
+                        清风明月博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Android/"><i class="fa "></i>
+                                Android</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Python/"><i class="fa "></i>
+                                Python</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/小程序/"><i class="fa "></i>
+                                小程序</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/HarmonyOS/"><i class="fa "></i>
+                                HarmonyOS</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Java SpringBoot集成onlyoffice实现word文档编辑保存">
+            
+            Java SpringBoot集成onlyoffice实现word文档编辑保存
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2023/06/17</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>在Java Spring Boot项目中集成OnlyOffice来实现Word文档的在线编辑和保存，你需要遵循以下几个步骤：</p>
+<ol>
+<li>添加依赖<br>首先，确保你的Maven pom.xml 文件中包含了OnlyOffice和相关库的依赖。通常，你不需要直接添加OnlyOffice的依赖，而是要确保你有处理HTTP请求的能力，比如使用Spring Web的依赖。</li>
+</ol>
+<dependencies>
+    <!-- Spring Web依赖 -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+<pre><code>&lt;!-- 如果需要额外的JSON处理能力 --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
+    &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+</dependencies>
+2. 配置OnlyOffice服务器
+你需要在本地或远程部署OnlyOffice的服务器。OnlyOffice提供了Docker镜像，可以通过Docker快速部署：
+
+<p>docker pull onlyoffice/documentserver<br>docker run –name onlyoffice -d -p 80:80 onlyoffice/documentserver<br>3. 配置Spring Boot应用<br>在Spring Boot应用中，你需要配置OnlyOffice的URL和编辑器的基地址。通常，这可以通过application.properties或application.yml文件来完成：</p>
+<p>onlyoffice.url=<a target="_blank" rel="noopener" href="http://localhost/">http://localhost:80</a><br>4. 实现文件上传和下载<br>你需要实现文件的上传和下载功能，以便OnlyOffice可以加载和保存文档。以下是一个简单的控制器示例，用于处理文件上传和下载：</p>
+<p>import org.springframework.http.ResponseEntity;<br>import org.springframework.web.bind.annotation.*;<br>import org.springframework.core.io.Resource;<br>import org.springframework.core.io.FileSystemResource;</p>
+<p>import java.io.File;<br>import java.nio.file.Paths;</p>
+<p>@RestController<br>@RequestMapping(“/documents”)<br>public class DocumentController {</p>
+<pre><code>@PostMapping(&quot;/upload&quot;)
+public ResponseEntity&lt;String&gt; uploadDocument(@RequestParam(&quot;file&quot;) MultipartFile file) &#123;
+    // 保存文件到本地或数据库
+    // 返回文件的URL或ID，以便OnlyOffice可以使用
+    return ResponseEntity.ok().body(&quot;File uploaded successfully&quot;);
+&#125;
+
+@GetMapping(&quot;/download/&#123;id&#125;&quot;)
+public ResponseEntity&lt;Resource&gt; downloadDocument(@PathVariable(&quot;id&quot;) String id) &#123;
+    // 根据文件ID加载文件
+    File file = new File(Paths.get(&quot;path/to/your/files&quot;, id).toString());
+    Resource resource = new FileSystemResource(file);
+
+    // 返回文件资源
+    return ResponseEntity.ok()
+            .header(HttpHeaders.CONTENT_DISPOSITION, &quot;attachment; filename=\&quot;&quot; + file.getName() + &quot;\&quot;&quot;)
+            .body(resource);
+&#125;
+</code></pre>
+<p>}<br>5. 集成OnlyOffice编辑器<br>接下来，你需要在前端页面中集成OnlyOffice编辑器。这通常涉及到JavaScript代码，使用OnlyOffice提供的API来初始化编辑器：</p>
+<p>var editor = onlyoffice.editors.edit({<br>    url: “/onlyoffice/edit”,<br>    document: {<br>        url: “/documents/download/1”,<br>        title: “Sample Document”<br>    },<br>    mode: “edit”,<br>    callback: function(event) {<br>        console.log(event);<br>    }<br>});<br>6. 处理OnlyOffice的回调<br>当文档在OnlyOffice中被编辑并保存时，OnlyOffice会发送一个回调请求到你的服务器。你需要实现一个端点来处理这些回调，保存更新后的文档：</p>
+<p>@PostMapping(“/onlyoffice/callback”)<br>public ResponseEntity<String> handleCallback(@RequestBody Map&lt;String, Object&gt; data) {<br>    // 处理回调数据，保存更新后的文档<br>    return ResponseEntity.ok().body(“Callback handled successfully”);<br>}<br>7. 部署和测试<br>完成上述步骤后，部署你的Spring Boot应用并测试文档编辑和保存功能。确保OnlyOffice服务器和Spring Boot应用之间的网络通信没有问题。</p>
+<p>以上步骤提供了集成OnlyOffice的基本框架，但具体实现细节可能会根据你的项目需求和技术栈有所不同。确保阅读OnlyOffice的官方文档以获得更详细的指南和最佳实践。</p>
+
+    </div>
+    <div align="center">
+     <p style="text-align:center; color:orange; font-size:26px">安卓学习教程公众号</p>
+       <img src="/./img/ercode.jpg" width="258" height="258">
+     </div>
+    
+    <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+            <span class="reward-type">
+                <img class="wechat" src="/./img/reward-wepay.jpg"><b>微信打赏</b>
+            </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">
+        祝你事业顺心，富贵吉祥，赞赏鼓励
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">清风明月</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2023/06/23/categories/%E5%90%8E%E7%AB%AF/SpringBoot%20%E5%AE%9E%E7%8E%B0%E8%A7%86%E9%A2%91%E5%88%86%E6%AE%B5%E6%92%AD%E6%94%BE/" class="pre-post btn btn-default" title='SpringBoot 实现视频分段播放'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            SpringBoot 实现视频分段播放</span>
+    </a>
+    
+    
+    <a href="/2023/06/11/categories/%E5%90%8E%E7%AB%AF/SpringBoot%E5%AE%9E%E7%8E%B0%E8%81%8A%E5%A4%A9%E5%8A%9F%E8%83%BD/" class="next-post btn btn-default" title='SpringBoot 结合 WebSocket 实现聊天功能'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            SpringBoot 结合 WebSocket 实现聊天功能</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    
+<div class="utteranc">
+  
+  <script
+    src='https://utteranc.es/client.js'
+    repo='yansil/snippet-comment'
+    issue-term='pathname'
+    issue-number=''
+    theme='github-light'
+    label=''
+    crossorigin='anonymous'
+    async
+  ></script>
+</div>
+
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <p>暂无目录</p>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2021
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//yansil.github.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>
