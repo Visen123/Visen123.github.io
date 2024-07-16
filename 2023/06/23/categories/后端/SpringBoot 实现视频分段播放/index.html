@@ -1,0 +1,421 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="清风明月博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.3.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://Visen123.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="Android" />
+
+
+<meta name="description" content="需求：现在我本地电脑中有一个文件夹，文件夹中都是视频，需要实现视频播放的功能。
+问题：如果通过类似 SpringBoot static 文件夹的方式来实现，客户端要下载好完整的视频之后才可以播放..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    SpringBoot 实现视频分段播放 |
+    
+    清风明月博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="清风明月博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /./img/beiixin.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='清风明月'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://Visen123.github.io">
+                        清风明月博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Android/"><i class="fa "></i>
+                                Android</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Python/"><i class="fa "></i>
+                                Python</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/小程序/"><i class="fa "></i>
+                                小程序</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/HarmonyOS/"><i class="fa "></i>
+                                HarmonyOS</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="SpringBoot 实现视频分段播放">
+            
+            SpringBoot 实现视频分段播放
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2023/06/23</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>需求：现在我本地电脑中有一个文件夹，文件夹中都是视频，需要实现视频播放的功能。</p>
+<p>问题：如果通过类似 SpringBoot static 文件夹的方式来实现，客户端要下载好完整的视频之后才可以播放，并且服务端也会占用大量宽带。所以这里考虑采取视频分段的方式进行下载，客户端播放视频时，可以通过进度条调节视频进度。</p>
+<p>实现方法：在 SpringBoot 中支持自定义资源请求处理器，通过自定义的资源处理器来实现。</p>
+<p>依赖：主要就是 SpringBoot 的相关依赖：</p>
+<pre><code>    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-boot-starter&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+</code></pre>
+<p>编写一个自定义资源请求处理器，需要继承 ResourceHttpRequestHandler 重写 getResource() 方法。该自定义处理器还需要加上 @Component 注解。<br>在案例中 getResource() 方法中，需要拿到对应的视频地址，通过 Controller 层的代码通过 request.setAttribute(“video-uri”, videoUri) 设置 video-uri 的 value，value 可以是视频的本地路径，也可以是视频的唯一标识，需要按照自己的业务来传值。</p>
+<pre><code>    import org.springframework.core.io.FileSystemResource;
+    import org.springframework.core.io.Resource;
+    import org.springframework.stereotype.Component;
+    import org.springframework.web.servlet.resource.ResourceHttpRequestHandler;
+
+    import javax.servlet.http.HttpServletRequest;
+
+    /**
+     * @author 17279
+     */
+    @Component
+    public class VideoResourceHttpRequestHandler extends ResourceHttpRequestHandler &#123;
+      // 只需要重写 getResource 方法
+      @Override
+      protected Resource getResource(HttpServletRequest request) &#123;
+        // 这里的 videoUri 是在 Controller 中通过 request.setAttribute(&quot;video-uri&quot;, videoUri) 进来的值
+        String videoUri = (String) request.getAttribute(&quot;video-uri&quot;); // D:\Downloads\test.mp4
+        // 可以通过 videoUri 传递的值根据我们的业务查找对应的文件
+        return new FileSystemResource(videoUri);
+      &#125;
+    &#125;
+</code></pre>
+<p>编写 Controller 层代码：</p>
+<p>这里通过 request.setAttribute(“video-uri”, videoUri) 添加 video-uri 的 value，自定义处理中通过这个 value 找到向前端返回的视频。</p>
+<pre><code>    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.web.bind.annotation.GetMapping;
+    import org.springframework.web.bind.annotation.PathVariable;
+    import org.springframework.web.bind.annotation.RequestMapping;
+    import org.springframework.web.bind.annotation.RestController;
+    import org.springframework.web.servlet.resource.ResourceHttpRequestHandler;
+
+    import javax.servlet.ServletException;
+    import javax.servlet.http.HttpServletRequest;
+    import javax.servlet.http.HttpServletResponse;
+    import java.io.IOException;
+    import java.nio.charset.StandardCharsets;
+    import java.nio.file.Files;
+    import java.nio.file.Path;
+    import java.nio.file.Paths;
+
+    /**
+     * @author 17279
+     */
+
+    @RestController
+    @RequestMapping(&quot;video&quot;)
+    public class VideoController &#123;
+      @Autowired
+      private ResourceHttpRequestHandler resourceHttpRequestHandler;
+
+      /**
+        * @param fileName fileName 前端传递过来的视频文件名名称
+        */
+      @GetMapping(value = &quot;/&#123;fileName&#125;&quot;)
+      public void video(@PathVariable(&quot;fileName&quot;) String fileName, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException &#123;
+        // 视频文件根目录【换成实际的视频根目录】
+        final String videoBasePath = &quot;D:/Downloads/&quot;;
+
+        // 视频根目录 + 文件名称，找到对应的文件
+        String videoUri = videoBasePath + fileName;
+        Path videoPath = Paths.get(videoUri);
+
+        if (Files.exists(videoPath)) &#123;
+          // 如果找到视频，那么返回视频信息
+          String contentType = Files.probeContentType(videoPath);
+          if (contentType != null &amp;&amp; !&quot;&quot;.equals(contentType)) &#123;
+            response.setContentType(contentType);
+          &#125;
+          // video-path 主要是将视频的地址传递给自定义的资源处理器处使用
+          request.setAttribute(&quot;video-uri&quot;, videoUri);
+          resourceHttpRequestHandler.handleRequest(request, response);
+        &#125; else &#123;
+          // 如果文件不存在，那么跳到 404 页面
+          response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+          response.setCharacterEncoding(StandardCharsets.UTF_8.toString());
+        &#125;
+      &#125;
+    &#125;
+</code></pre>
+<p>访问地址：<a target="_blank" rel="noopener" href="http://localhost/video/test.mp4">http://localhost/video/test.mp4</a></p>
+<p>访问效果：这里设置的视频跟目录是 D:/Downloads/，前端传递的 fileName 为 test.mp4，所以实际返回前端的文件为 D:/Downloads/test.mp4</p>
+
+    </div>
+    <div align="center">
+     <p style="text-align:center; color:orange; font-size:26px">安卓学习教程公众号</p>
+       <img src="/./img/ercode.jpg" width="258" height="258">
+     </div>
+    
+    <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+            <span class="reward-type">
+                <img class="wechat" src="/./img/reward-wepay.jpg"><b>微信打赏</b>
+            </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">
+        祝你事业顺心，富贵吉祥，赞赏鼓励
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">清风明月</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2023/09/19/categories/%E5%90%8E%E7%AB%AF/javaspringboot%E5%AE%9E%E7%8E%B0%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E6%8E%A5%E5%8F%A3/" class="pre-post btn btn-default" title='javaspringboot实现上传文件接口'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            javaspringboot实现上传文件接口</span>
+    </a>
+    
+    
+    <a href="/2023/06/11/categories/%E5%90%8E%E7%AB%AF/SpringBoot%E5%AE%9E%E7%8E%B0%E8%81%8A%E5%A4%A9%E5%8A%9F%E8%83%BD/" class="next-post btn btn-default" title='SpringBoot 结合 WebSocket 实现聊天功能'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            SpringBoot 结合 WebSocket 实现聊天功能</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    
+<div class="utteranc">
+  
+  <script
+    src='https://utteranc.es/client.js'
+    repo='yansil/snippet-comment'
+    issue-term='pathname'
+    issue-number=''
+    theme='github-light'
+    label=''
+    crossorigin='anonymous'
+    async
+  ></script>
+</div>
+
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <p>暂无目录</p>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2021
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//yansil.github.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>

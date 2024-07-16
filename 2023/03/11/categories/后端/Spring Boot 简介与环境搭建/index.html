@@ -1,0 +1,359 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="清风明月博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.3.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://Visen123.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="Android" />
+
+
+<meta name="description" content="一、Spring Boot 简介与环境搭建1.1 Spring Boot 简介Spring Boot 是一种基于 Java 的开源框架，由 Pivotal Software 开发，旨在简化新 S..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    Spring Boot 简介与环境搭建 |
+    
+    清风明月博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="清风明月博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /./img/beiixin.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='清风明月'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://Visen123.github.io">
+                        清风明月博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Android/"><i class="fa "></i>
+                                Android</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Python/"><i class="fa "></i>
+                                Python</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/小程序/"><i class="fa "></i>
+                                小程序</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/HarmonyOS/"><i class="fa "></i>
+                                HarmonyOS</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Spring Boot 简介与环境搭建">
+            
+            Spring Boot 简介与环境搭建
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2023/03/11</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>一、Spring Boot 简介与环境搭建<br>1.1 Spring Boot 简介<br>Spring Boot 是一种基于 Java 的开源框架，由 Pivotal Software 开发，旨在简化新 Spring 应用程序的初始化、配置和部署过程。它遵循约定优于配置的原则，通过内嵌的Tomcat、Jetty或Undertow等容器，使得开发者能够快速构建独立运行的、生产级别的基于Spring框架的应用程序。Spring Boot 包含了大量的自动配置功能，可智能识别已存在的库并配置相应组件，从而减少手动配置的工作量。</p>
+<p>1.2 开发环境准备<br>1.2.1 JDK 安装与配置<br>首先确保您的开发环境中安装了Java Development Kit (JDK)，推荐使用 Oracle JDK 8 及以上版本。设置系统环境变量，包括 JAVA_HOME，并在 PATH 中包含 %JAVA_HOME%\bin （Windows）或 $JAVA_HOME/bin （Linux/macOS）。</p>
+<p>1.2.2 IDE 选择与配置<br>IntelliJ IDEA: 下载并安装 IntelliJ IDEA 社区版或旗舰版，然后在其插件市场中搜索并安装 Spring Assistant 或 Spring Boot 插件，以便更好地支持 Spring Boot 项目的创建和开发。</p>
+<p>Eclipse: 安装 Eclipse IDE for Enterprise Java and Web Developers 版本，并通过 Marketplace 安装 Spring Tools 4 插件。</p>
+<p>1.2.3 构建工具配置</p>
+<p>Maven: 使用 Maven 构建 Spring Boot 项目，需要在项目的 pom.xml 文件中添加 Spring Boot 的父项目依赖，以及指定所需的功能起步依赖。以下是示例：<br>1&lt;project xmlns=”<a target="_blank" rel="noopener" href="http://maven.apache.org/POM/4.0.0&quot;">http://maven.apache.org/POM/4.0.0&quot;</a> xmlns:xsi=”<a target="_blank" rel="noopener" href="http://www.w3.org/2001/XMLSchema-instance&quot;">http://www.w3.org/2001/XMLSchema-instance&quot;</a><br>2         xsi:schemaLocation=”<a target="_blank" rel="noopener" href="http://maven.apache.org/POM/4.0.0">http://maven.apache.org/POM/4.0.0</a> <a target="_blank" rel="noopener" href="http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;">http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;</a><br>3    <modelVersion>4.0.0</modelVersion><br>4<br>5    <!-- 设置 Spring Boot 父项目 --><br>6    <parent><br>7        <groupId>org.springframework.boot</groupId><br>8        <artifactId>spring-boot-starter-parent</artifactId><br>9        <version>2.6.x</version> <!-- 替换为当前最新的稳定版 --><br>10        <relativePath/> <!-- lookup parent from repository --><br>11    </parent><br>12<br>13    <groupId>com.example</groupId><br>14    <artifactId>my-spring-boot-app</artifactId><br>15    <version>0.0.1-SNAPSHOT</version><br>16    <name>My Spring Boot App</name><br>17    <description>Demo project for Spring Boot</description><br>18<br>19    <!-- 添加 Spring Boot Web 依赖 --><br>20    <dependencies><br>21        <dependency><br>22            <groupId>org.springframework.boot</groupId><br>23            <artifactId>spring-boot-starter-web</artifactId><br>24        </dependency><br>25    </dependencies><br>26<br>27    <!-- 其他配置项，如打包方式、插件等 --><br>28</project><br>29<code>30 31- **Gradle**: 在 Gradle 项目中，可在</code>build.gradle` 文件中添加 Spring Boot 插件和起步依赖：<br>32<br>33```groovy<br>34plugins {<br>35    id ‘org.springframework.boot’ version ‘2.6.x’ // 替换为当前最新的稳定版<br>36    id ‘io.spring.dependency-management’ version ‘1.0.11.RELEASE’<br>37    id ‘java’<br>38}<br>39<br>40group = ‘com.example’<br>41version = ‘0.0.1-SNAPSHOT’<br>42sourceCompatibility = ‘1.8’<br>43<br>44repositories {<br>45    mavenCentral()<br>46}<br>47<br>48dependencies {<br>49    implementation ‘org.springframework.boot:spring-boot-starter-web’<br>50    // 其他依赖<br>51}</p>
+<p>1.3 创建第一个 Spring Boot 项目<br>可以通过以下两种方式创建 Spring Boot 项目：</p>
+<p>使用 IDE 内置向导：在 IntelliJ IDEA 或 Eclipse 中直接新建 Spring Boot 项目，按照向导指引选择所需的依赖。</p>
+<p>使用 Spring Initializr：访问 <a target="_blank" rel="noopener" href="https://start.spring.io/%EF%BC%8C%E5%9C%A8%E7%BA%BF%E7%94%9F%E6%88%90%E5%9F%BA%E7%A1%80%E7%9A%84">https://start.spring.io/，在线生成基础的</a> Spring Boot 项目结构，下载后导入到本地 IDE 中。</p>
+<p>生成的项目中包含一个带有 @SpringBootApplication 注解的主类，它是 Spring Boot 应用的核心入口点：</p>
+<p>1import org.springframework.boot.SpringApplication;<br>2import org.springframework.boot.autoconfigure.SpringBootApplication;<br>3<br>4@SpringBootApplication<br>5public class MyApplication {<br>6<br>7    public static void main(String[] args) {<br>8        SpringApplication.run(MyApplication.class, args);<br>9    }<br>10}<br>二、Spring Boot 核心特性及组件<br>2.1 自动配置（Auto-Configuration）<br>Spring Boot 的自动配置机制基于条件注解（Conditional Annotations）和META-INF/spring.factories中的配置元数据。当类路径中检测到特定的库时，Spring Boot 将自动配置对应的Bean。例如，当发现 spring-boot-starter-data-jpa 和连接数据库的驱动时，会自动配置数据源、JPA EntityManagerFactory、TransactionManager 等组件。</p>
+<p>2.2 起步依赖（Starter Dependencies）<br>Spring Boot 通过提供一系列的“起步依赖”（starter），帮助开发者轻松地添加相关技术栈。这些依赖集合了该技术领域常用的一系列库，避免了逐个添加和管理单个依赖的繁琐工作。</p>
+<p>2.3 主启动类（Main Application Class）<br>@SpringBootApplication 注解的主类不仅指示了应用的入口点，还聚合了 @Configuration（表示这是一个配置类）、@EnableAutoConfiguration（开启自动配置）和 @ComponentScan（自动扫描组件）注解。这使得 Spring 容器能够自动发现、装配和管理应用程序中的所有组件。</p>
+<p>三. Spring Boot Web 开发<br>3.1 RESTful API 设计<br>Spring Boot 提供了强大的支持来设计和实现符合 RESTful 规范的 Web 服务。通过使用 @RestController 注解标记控制器类或者方法，可以很容易地创建处理 HTTP 请求的资源端点。同时，借助于 @PathVariable、@RequestParam、@RequestBody 等注解，可以处理 URL 路径参数、查询参数和请求体数据。此外，响应式编程模型（Reactor/Mono/Flux）也能无缝整合进 Spring Boot Web 开发中，以实现高效的非阻塞 I/O。</p>
+<p>3.2 控制器（Controller）<br>在 Spring Boot 中，控制器负责接收客户端的请求并处理相应的业务逻辑。控制器类通常包含多个处理不同HTTP动作的方法，比如 GET、POST、PUT、DELETE 等。通过 @GetMapping、@PostMapping 等注解指定对应的动作类型，配合 Model 和 View 或 JSON 数据返回给客户端。</p>
+<p>3.3 视图层技术<br>Spring Boot 支持多种模板引擎，包括 Thymeleaf 和 FreeMarker。Thymeleaf 是一款服务器端的现代模版引擎，它可以无缝处理HTML，允许在HTML文件中编写表达式和语句，动态生成网页内容。FreeMarker 则是一种灵活的基于模板的文本处理器，常用于生成 HTML 页面和其他类型的文档。</p>
+<p>四. 数据访问与持久化<br>4.1 Spring Data JPA<br>Spring Data JPA 是 Spring Boot 对 Java Persistence API (JPA) 的封装，极大地简化了数据库操作。通过定义继承自 JpaRepository 或 CrudRepository 的接口，即可快速实现对数据库的基本 CRUD 操作。此外，Spring Data JPA 还提供了分页、排序、自定义查询等功能。</p>
+<p>4.2 Hibernate<br>作为 JPA 实现的一种，Hibernate 在 Spring Boot 中被广泛应用于 ORM 映射，将对象关系映射到数据库表中。通过配置 Hibernate 的实体映射、事务管理等，可以方便地进行数据库的交互。</p>
+<p>4.3 NoSQL 数据库集成<br>Spring Boot 不仅支持传统的关系型数据库，也非常容易集成各种 NoSQL 数据存储方案，如 MongoDB、Cassandra、Redis 等。通过引入相关的 starter 依赖，即可快速接入这些数据库，使用 Spring Data 提供的统一接口进行操作。</p>
+<p>五. 安全性（Spring Security）<br>Spring Security 是一套完整的安全解决方案，可用于实现认证（Authentication）和授权（Authorization）。在 Spring Boot 中，只需简单的配置就可以启用 Spring Security，实现登录验证、角色权限控制、CSRF防护等功能。还可以定制过滤器链、加密策略以及其他高级安全特性。</p>
+<p>六. 配置管理<br>6.1 properties/yaml文件<br>Spring Boot 支持使用 properties 或 yaml 文件进行应用配置，包括数据库连接、端口绑定、日志级别等各种配置项。默认读取 application.properties 或 application.yml 文件。</p>
+<p>6.2 外部化配置<br>Spring Boot 提倡配置外部化，即从环境变量、命令行参数或远程配置中心加载配置，便于多环境下的应用部署和管理。</p>
+<p>6.3 Actuator 监控端点<br>Spring Boot Actuator 提供了一系列内置的健康检查、审计、指标收集和暴露端点，使开发者能够方便地了解应用运行状态和性能指标，这对于运维监控至关重要。</p>
+<p>七. 单元测试与集成测试<br>7.1 Spring Boot Test<br>Spring Boot Test 模块提供了丰富的测试支持，如模拟 MVC 测试、数据层测试等。通过 @SpringBootTest 注解启动一个完整应用程序上下文进行测试。</p>
+<p>7.2 MockMvc<br>MockMvc 是一个用于执行模拟请求、测试控制器行为的工具，无需启动整个 Servlet 容器就能验证 Controller 层的逻辑正确性。</p>
+<p>7.3 TestRestTemplate<br>TestRestTemplate 类简化了对 RESTful 服务的集成测试，尤其适用于测试对外提供的 REST API。</p>
+<p>八. 微服务架构<br>8.1 Eureka<br>Eureka 是 Netflix OSS 中的服务注册与发现组件，在 Spring Cloud 中扮演重要角色，帮助构建高可用的服务治理体系。</p>
+<p>8.2 Ribbon<br>Ribbon 提供客户端负载均衡功能，可以透明地实现服务间的通信与负载均衡策略。</p>
+<p>8.3 Feign<br>Feign 是一个声明式的伪客户端 HTTP 请求库，使得微服务之间的调用变得简洁明了。</p>
+<p>8.4 Zuul<br>Zuul 是边缘服务路由网关，用于处理所有的微服务对外请求，提供路由转发、过滤器等功能，实现微服务的安全性、鉴权和流量控制。</p>
+<p>九. DevTools 工具<br>Spring Boot DevTools 提供了热部署功能，当代码发生变化时，自动重启应用，大大提高了开发效率。</p>
+<p>十. 日志管理与分布式跟踪<br>10.1 Logback/Spring Boot 默认日志系统<br>Spring Boot 默认采用 Logback 作为日志框架，但也可以轻松切换到其他如 Log4j2。配置日志级别、输出格式以及文件滚动策略等十分便利。</p>
+<p>10.2 Sleuth/Zipkin 分布式跟踪<br>Spring Cloud Sleuth 提供了一套针对分布式系统的追踪解决方案，结合 Zipkin 可以可视化展示服务间的调用链路，便于分析和定位分布式环境下的性能瓶颈和服务异常。</p>
+<p>十一. 应用部署与运维<br>11.1 Docker容器化<br>Spring Boot 应用非常适合容器化部署，通过 Dockerfile 构建镜像，实现标准化的部署流程，易于维护和扩展。</p>
+<p>11.2 Kubernetes编排<br>利用 Kubernetes 进行应用编排，能够自动化部署、管理和扩展 Spring Boot 应用，适应云原生时代的基础设施需求。</p>
+
+    </div>
+    <div align="center">
+     <p style="text-align:center; color:orange; font-size:26px">安卓学习教程公众号</p>
+       <img src="/./img/ercode.jpg" width="258" height="258">
+     </div>
+    
+    <div class="reward" ontouchstart>
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+            <span class="reward-type">
+                <img class="wechat" src="/./img/reward-wepay.jpg"><b>微信打赏</b>
+            </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">
+        祝你事业顺心，富贵吉祥，赞赏鼓励
+    </p>
+</div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">清风明月</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2023/06/11/categories/%E5%90%8E%E7%AB%AF/SpringBoot%E5%AE%9E%E7%8E%B0%E8%81%8A%E5%A4%A9%E5%8A%9F%E8%83%BD/" class="pre-post btn btn-default" title='SpringBoot 结合 WebSocket 实现聊天功能'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            SpringBoot 结合 WebSocket 实现聊天功能</span>
+    </a>
+    
+    
+    <a href="/2022/10/12/categories/%E5%89%8D%E7%AB%AF/JS%E8%8E%B7%E5%8F%96%E6%89%8B%E6%9C%BA%E5%9E%8B%E5%8F%B7%E5%92%8C%E7%B3%BB%E7%BB%9F%E7%89%88%E6%9C%AC/" class="next-post btn btn-default" title='JS获取手机型号和系统版本'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            JS获取手机型号和系统版本</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    
+<div class="utteranc">
+  
+  <script
+    src='https://utteranc.es/client.js'
+    repo='yansil/snippet-comment'
+    issue-term='pathname'
+    issue-number=''
+    theme='github-light'
+    label=''
+    crossorigin='anonymous'
+    async
+  ></script>
+</div>
+
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <p>暂无目录</p>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2021
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//yansil.github.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>
